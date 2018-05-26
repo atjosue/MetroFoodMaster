@@ -35,18 +35,7 @@
       <li class="nav-item active">
           <p class="lead"> <font color="white"><?php session_start(); echo "Bienvenido"; ?> </font></p>
       </li>
-     <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-  -->
+    
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -63,11 +52,17 @@
 
 <!-- --------------------------------------------------------Para el header---------------------------------------------------------------->
       <?php 
-            $id=$_POST['idUsuario'];
+            $id=$_POST['id'];
+
             require_once'../../model/Restaurante.php';
+
             $objRestaurante = new Restaurante();
+            $con=$objRestaurante->conectar();
             $sql="SELECT * from restaurante WHERE estadoRestaurante = '1' && idRestaurante='".$id."'";
-            $info=$con->query($sql);
+
+            $data=$con->query($sql);
+            $info = $data->fetch_assoc();
+           
 
 
         echo '<div class="container">
@@ -89,9 +84,11 @@
 <!-- -------------------------------------------------------- Mostrar COmbos---------------------------------------------------------------->
 
 <?php 
+              require_once'../../model/Producto.php';
+              $id=$_POST['id'];
 
               $objProducto =  new Producto();
-              $data = $objProducto->getAll();
+              $data = $objProducto->productoParametro($id);
               //$datos = $data->fetch_assoc();
               $br = 4;
               $cont=0;
@@ -148,7 +145,6 @@
 
       </div>
              
-
 
     </div>
        ?>

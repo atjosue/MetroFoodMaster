@@ -9,6 +9,7 @@
     <script type="text/javascript" src="../../pluggins/plugins/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="../../pluggins/sweetalert-master/dist/sweetalert.css">
     <script type="text/javascript" src=".././../pluggins/sweetalert-master/dist/sweetalert.min.js" ></script>
+    <script type="text/javascript" src="../../resources/js/dashboardCliente.js" ></script>
 
     <title>MetroFood(cliente)</title>
 
@@ -116,7 +117,11 @@
                         
                           </div>
                           <div class="card-footer" >
-                            <a href="view/login/login.php" class="btn btn-primary verPerfil" id="'.$value['idRestaurante'].'">Ver Mas...</a>
+                            <form action="perfilRestaurante.php" method="POST">
+                            <input type="hidden" name="id" id="id" value="'.$value['idRestaurante'].'">
+                            <input type="submit" class="btn btn-primary" >Ver Mas...</input>
+
+                            </form>
                           </div>
                         </div>
                       </div>

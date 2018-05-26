@@ -117,6 +117,26 @@
         return $dato;
     }
 
+    public function productoParametro($var){
+
+    		$objCon = new Conexion();
+    	$con = $objCon->conectar();
+
+    	  $sqlAll = "SELECT * from combo WHERE estadoCombo = '1' && idRestaurante='".$var."'";  
+
+	        $info = $con->query($sqlAll);
+
+	        if ($info->num_rows>0) {
+	            
+	            $dato = $info;
+	        }else{
+
+	            $dato = false;
+	        }
+
+	        return $dato;
+    }
+
     public function agregarProducto(){
 
 		$objCon = new Conexion();

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 		$(document).on("click",".verPerfil", function(){
 		 	var idUsuario = $(this).attr("id");
-		 	
+		 	console.log(idUsuario);
 
 		 		$.ajax({
 
