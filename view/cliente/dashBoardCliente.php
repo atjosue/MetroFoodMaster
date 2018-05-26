@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,114 +71,79 @@
       <!-- Page Features -->
       <div class="row text-center">
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Pollo Campero</h4>
-              <p class="card-text">Siente el sabor de la magia de Sabor campero! has click para ver nuestras promociones</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Taco Bell</h4>
-              <p class="card-text">Si no hay taco no hay Fiesta, ve nuestras mejores promociones, has click</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
+               <div class="row text-center">
+          <?php 
+            require_once'../../model/Restaurante.php';
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Wendys</h4>
-              <p class="card-text">Mira nuestras Promociones y descuentos especiales solo en esta aplicacion!</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
+              $objRestaurante =  new restaurante();
+              $data = $objRestaurante->getAllInformacionHOME();
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Pizzeria Italiana</h4>
-              <p class="card-text">El sabor de Italia a tan solo unos minutos, Conoce mas acerca de nuestras Promociones!!</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
+              //echo $data;
+              //var_dump($data);
+              //die();
+             // $datos = $data->fetch_assoc();
+              $br = 4;
+              $cont=0;
+
+//x
+              foreach ($data as $value) {
+
+                $inicio = "../../imagenes/img/";
+                $nameIMG;
+              
+                echo "<br><br>";
+
+                $ima = $value["img"];
+
+               
+
+                if ($ima=="") {
+                   $nameIMG="imagenNo";
+                }else{
+                  $nameIMG=$value['img'];
+                }
+
+                $fin = ".png";
+                $link = $inicio.$nameIMG.$fin;
+
+               echo ' <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card">
+                          <img class="card-img-top" src="'.$link.'" >
+                          <div class="card-body">
+                            <h4 class="card-title">"'.$value['nombreRestaurante'].'"</h4>
+                            <p class="card-text">"'.$value['descripcionRestaurante'].'"</p>
+                        
+                          </div>
+                          <div class="card-footer" >
+                            <a href="view/login/login.php" class="btn btn-primary verPerfil" id="'.$value['idRestaurante'].'">Ver Mas...</a>
+                          </div>
+                        </div>
+                      </div>
+                     
+
+                      ';
+                    $cont++;
+
+                        if ($cont==$br) {
+                          echo " <div class='clearfix'></div>";
+
+                          $br++;
+                          $br++;
+                          $br++;
+                          $br++;
+                        }
+                       
+              }
+
+
+
+
+             ?>
+       
 
       </div>
-      <!-- /.row -->
-
-       <div class="row text-center">
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">China Work</h4>
-              <p class="card-text">Alguna Vez has sentido que estas mas cerca de China de lo que crees, has click y Sorprendete!</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Tony's Roma</h4>
-              <p class="card-text"> EL sabor Gourmet hasta la puerta de tu casa! clickea y ordena nuestros Productos!</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Go Green</h4>
-              <p class="card-text">Mas Vegetariano que nadie, Mas cerca de ti! has click y ve nuestras Promociones!</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Beniggans</h4>
-              <p class="card-text">Las mejores Hambuguesas de Todo El Salvador a solo un click  y unos minutos !</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Ver Mas...</a>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
              
