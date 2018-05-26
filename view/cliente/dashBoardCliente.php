@@ -119,7 +119,7 @@
                           <div class="card-footer" >
                             <form action="perfilRestaurante.php" method="POST">
                             <input type="hidden" name="id" id="id" value="'.$value['idRestaurante'].'">
-                            <input type="submit" class="btn btn-primary" >Ver Mas...</input>
+                            <input type="submit" class="btn btn-primary" value="Ver Mas..." ></input>
 
                             </form>
                           </div>

@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../../contenido/vendor/bootstrap/css/bootstrap.css">
     <script src="../../pluggins/plugins/JQuery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../../pluggins/plugins/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../pluggins/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../pluggins/sweetalert-master/dist/sweetalert.css">
     <script type="text/javascript" src=".././../pluggins/sweetalert-master/dist/sweetalert.min.js" ></script>
+    <script type="text/javascript" src="../../resources/js/PerfilRestaurantecliente.js" ></script>
 
     <title>MetroFood(cliente)</title>
 
@@ -30,7 +31,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="dashBoardCliente.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
           <p class="lead"> <font color="white"><?php session_start(); echo "Bienvenido"; ?> </font></p>
@@ -114,15 +115,48 @@
                           <div class="card">
                           <img class="card-img-top" src="'.$link.'" >
                             <div class="card-body" style:" overflow:hidden; text-overflow: ellipsis;">
-                              <h4 class="card-title">"'.$value['nombreCombo'].'"</h4>
+                              <h4 class="card-title">'.$value['nombreCombo'].'</h4>
                               <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                              <a  class="btn btn-primary editarCombo" id="'.$value['img'].'" value="Editar">Editar</a>
-                              <a  class="btn btn-primary eliminarCombo" id="'.$value['img'].'" value="Eliminar">Eliminar</a>
+                              <a  class="btn btn-primary agregarACarrito botonLeer" id="'.$value['idCombo'].'" name="'.$value['img'].'">Leer mas...</a>
                             </div>
                           </div>
-                        </div>';
+                        </div>
+
+                        <div class="modal comboView " tabindex="-1" role="dialog" id="'.$value['img'].'" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <br><br><br><br><br><br>
+                          <div class="modal-dialog modal-lg" role="document" >
+                            <div class="modal-content">
+                              <div class="modal-header close">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  &times;
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                    <div class="row">
+                                      <br><br><br>
+                                          <div class="col-sm-8 col-md-8 col-xs-8 ">
+                                                <h4>'.$value['nombreCombo'].'<h4> <br>
+                                                  <br><br>
+                                              <h5>'.$value['descripcionCombo'].'</h5>
+
+                                          </div>
+                                          
+                                          <div class="col-sm-4 col-md-4 col-xs-4  ">
+                                            <br><br><br>
+                                            <div class="col-lg-12 col-md-12 form-control"> <h3> Precio del Producto: <br>'.$value['precioCombo'].'</h3></div>
+                                            <div class="clearfix"></div><br><br><br>
+                                            <div class="col-lg-12 col-md-12 btn btn-success">   <h4>Añadir a Carrito<img src="../../imagenes/iconos/agregarCarrito.png"></h4></div>
+                                          </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        ';
                     $cont++;
 
                         if ($cont==$br) {
@@ -147,7 +181,7 @@
              
 
     </div>
-       ?>
+       
 
 <!-- -------------------------------------------------------- FIn  de Mostrar COmbos---------------------------------------------------------------->
    
