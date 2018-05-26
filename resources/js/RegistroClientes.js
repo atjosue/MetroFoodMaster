@@ -89,7 +89,7 @@ $(document).ready(function(){
 						})
 
 						setTimeout(function(){
-							location.href("../../view/login/login.php");
+							$(location).attr('href',"../../view/login/login.php");
 						},1000);
 					}
 					else if (data==false){
