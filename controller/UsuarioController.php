@@ -25,6 +25,15 @@
 				primeraVez();
 				break;
 
+			case 'solicitarInfo':
+				solicitarInfo();
+					break;	
+
+			case 'modificar':
+					modificar();
+				break;
+	
+
 			default:
 				
 				break;
@@ -78,6 +87,51 @@
 		$objUsuario= new Usuario();
 		$res=$objUsuario->primeraVez();
 		echo $res;
+	}
+
+	function solicitarInfo()
+	{
+		$objUsuario = new Usuario();
+		$idUsuario = $_POST['idUsuario'];
+		
+		$data = $objUsuario->getUser($idUsuario);
+
+	
+		echo $data;
+
+	}
+
+	function modificar()
+	{
+		$objUsuario = new Usuario();
+		$dataUsuario = $_POST['info'];
+		$decodeInfo = json_decode($dataUsuario);		
+		$usuario = $decodeInfo[0]->value;
+		$pass= $decodeInfo[1]->value;
+		$fechaModificacionUsuario = date("y-m-d");
+		$idUsuario=$decodeInfo[3]->value;
+		if ($pass=="") {
+
+		$objUsuario->setUsuario($usuario);
+		$objUsuario->setFechaModificacionUsuario($fechaModificacionUsuario);
+
+		}else{
+
+		$objUsuario->setUsuario($usuario);
+		$objUsuario->setPass($pass);
+		$objUsuario->setFechaModificacionUsuario($fechaModificacionUsuario);
+
+		}
+
+		$res = $objUsuario->updateUser($idUsuario);
+		echo $res;
+
+	/*	$objUsuario->setUsuario($usuario);
+		$objUsuario->setPass($pass);
+		$objUsuario->setFechaModificacionUsuario;
+		$res = $objUsuario->updateUser($idUsuario);
+		echo $res;
+		*/
 	}
 	
  ?>

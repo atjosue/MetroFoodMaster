@@ -176,3 +176,57 @@
             </div>
         </div> 
 </div> 
+
+<!-- modal modificacion restaurante -->
+<div class="modal " id="modalModificar" role="dialog"  >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header " Style="height:45px;">
+                    <span class="robo" style="font-size: 20px;">Modificar Restaurante</span>
+                </div>
+                <div class="modal-body" >
+                  
+                      <div class="row" id="infoModificarRestaurante">
+                          <div class="form-column col-md-6 col-sm-4 col-xs-6">
+                                 <div class="form-group required">
+                                  <label for="nombre" class="control-label">Nombre</label>
+                                 <input type="text" class="form-control"  
+                                    placeholder="" name="usuario" id="modificarUsuario"  required="true">
+                                 </div>
+                          </div>
+                           
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group required">
+                              <label for="precio" class="control-label">Contraseña</label>            
+                              <input type="password"  name="pass" class="form-control" id="modificarPass" required>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <div class="form-column col-md-7 col-sm-7 col-xs-7">
+                            <div class="form-group required">
+                              <label for="descripcion" class="control-label">Confirmar Contraseña</label>            
+                              <input type="password"  name="repass" class="form-control" id="modificarRepass" required >
+                            </div>
+                          <input type="hidden" name="idUsuarioModi" id="idUsuarioModi">
+
+                          </div>
+                            
+                          <div class="clearfix"></div>  
+                          <div class="clearfix"></div>
+
+                    </div>
+                    <div>
+                    <button class="btn btn-primary  btn-sm " id="modificarRestaurante" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="cerrarModalModi" >Cancelar</button>
+                    
+
+                  </div>
+
+              </div>         
+               <div class="modal-footer" id="modalFooter" >
+                  
+               </div>
+            </div>
+        </div> 
+</div> 
+

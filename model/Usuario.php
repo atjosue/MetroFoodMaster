@@ -207,6 +207,58 @@ require_once 'Conexion.php';
 
 		    	return $dato;
 		    }
+
+		     //-----Datos para la modificacion desde el administrador
+		    public function getUser($idUsuario)
+			    {
+			    	$con=$this->conectar();
+			        
+			        $sql = "SELECT * FROM `usuario` WHERE idTipoUsuario=2 AND estadoUsuario=1 AND idUsuario=".$idUsuario;
+			        $info=$con->query($sql);
+			        $res=$info->fetch_assoc();
+
+			        $data=$res;
+
+			      
+			       
+			       // $data['idUsuario']=$res['idUsuario'];
+			       // $data['usuario'] = $res['usuario'];
+			        //$data['pass']= $res['pass'];
+			       // $data['nombrerol']= $res['nombre'];
+			        return json_encode($data);
+
+
+			    }
+
+			     public function updateUser($idUsuario)
+				    {
+				    	
+				    	if ($this->pass=="") {
+				    		 $sql = "UPDATE  usuario SET usuario = '".$this->usuario."', fechaModificacionUsuario='".$this->fechaModificacionUsuario."' WHERE idUsuario=".$idUsuario;
+				  				    	}else{
+				  			 $sql = "UPDATE  usuario SET usuario = '".$this->usuario."',pass= '".$this->encriptar($this->pass)."', fechaModificacionUsuario='".$this->fechaModificacionUsuario."' WHERE idUsuario=".$idUsuario;	    		
+				  				    	}
+				     
+							$con = $this->conectar();
+							$res=$con->query($sql);
+
+				        $data = array();
+				        if ($res) {
+				            $data['estado']=true;
+				            $data['descripcion']="Datos modificados exitosamente";
+				        }else{
+				            $data['estado']=false;
+				            $data['descripcion']="Error en la modificacion ";
+				        }
+
+				    return json_encode($data);
+				       
+
+
+				    }
+
+				
+
 				
 	}
  ?>
