@@ -1,5 +1,6 @@
 <?php 
 require_once '../model/Producto.php';
+require_once '../model/Carrito.php';
 
 if (isset($_POST['key'])) {
 	$key = $_POST['key'];
@@ -13,6 +14,9 @@ if (isset($_POST['key'])) {
 				break;
 			case 'hora':
 				obtenerHora();
+				break;
+			case 'Acarrito':
+				Acarrito();
 				break;
 			
 			default:
@@ -58,6 +62,26 @@ function verificarImagen(){
 
 	function obtenerHora(){
 		echo date('ymdgis');
+	}
+
+	function Acarrito(){
+
+
+		$objCarrito = new Carrito();
+
+		$info=$_POST['formDatos'];
+		$dataProd = json_decode($info);
+
+		$objCarrito->setPrecio($dataProd[0]->value);
+		$objCarrito->setIdCombo($dataProd[1]->value);
+		$objCarrito->setNombreCombo($dataProd[2]->value);
+		$objCarrito->setIdCliente($dataProd[3]->value);
+
+		$res=$objCarrito->agregarCombo();
+
+		echo $res;
+
+
 	} 
 	
 

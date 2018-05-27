@@ -86,15 +86,15 @@
 
 <?php 
               require_once'../../model/Producto.php';
-              $id=$_POST['id'];
+              $idRestaurante=$_POST['id'];
 
               $objProducto =  new Producto();
-              $data = $objProducto->productoParametro($id);
+              $data = $objProducto->productoParametro($idRestaurante);
               //$datos = $data->fetch_assoc();
               $br = 4;
               $cont=0;
+              $esta = 1.5;
 
-//x
               foreach ($data as $value) {
 
                 $inicio = "../../imagenes/img/";
@@ -106,6 +106,7 @@
                 }else{
                   $nameIMG=$value['img'];
                 }
+               
 
                 $fin = ".png";
                 $link = $inicio.$nameIMG.$fin;
@@ -124,38 +125,6 @@
                           </div>
                         </div>
 
-                        <div class="modal comboView " tabindex="-1" role="dialog" id="'.$value['img'].'" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <br><br><br><br><br><br>
-                          <div class="modal-dialog modal-lg" role="document" >
-                            <div class="modal-content">
-                              <div class="modal-header close">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  &times;
-                                </button>
-                              </div>
-                              <div class="modal-body">
-
-                                    <div class="row">
-                                      <br><br><br>
-                                          <div class="col-sm-8 col-md-8 col-xs-8 ">
-                                                <h4>'.$value['nombreCombo'].'<h4> <br>
-                                                  <br><br>
-                                              <h5>'.$value['descripcionCombo'].'</h5>
-
-                                          </div>
-                                          
-                                          <div class="col-sm-4 col-md-4 col-xs-4  ">
-                                            <br><br><br>
-                                            <div class="col-lg-12 col-md-12 form-control"> <h3> Precio del Producto: <br>'.$value['precioCombo'].'</h3></div>
-                                            <div class="clearfix"></div><br><br><br>
-                                            <div class="col-lg-12 col-md-12 btn btn-success">   <h4>Añadir a Carrito<img src="../../imagenes/iconos/agregarCarrito.png"></h4></div>
-                                          </div>
-                                    </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
                         ';
                     $cont++;
 
@@ -167,8 +136,9 @@
                           $br++;
                           $br++;
                         }
-                       
+                       $esta++;
               }
+
 
 
              ?>
@@ -201,3 +171,43 @@
 
   </body>
 </html>
+/***************************************************MODAL VER COMBO******************************************************
+ <div class="modal " tabindex="-1" role="dialog" id="comboView" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <br><br><br><br><br><br>
+                          <div class="modal-dialog modal-lg" role="document" >
+                            <div class="modal-content">
+                              <div class="modal-header close">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  &times;
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                    <div class="row">
+                                      <br><br><br>
+                                          <div class="col-sm-8 col-md-8 col-xs-8 ">
+                                                <h4><div id="nombreLeer"></div><h4> <br>
+                                                  <br><br>
+                                              <h5><div id="descripcionLeer"></div></h5>
+
+                                          </div>
+                                          
+                                          <div class="col-sm-4 col-md-4 col-xs-4" id="formDatos">
+                                            
+                                              <input type="hidden" name="precioPre" id="precioPre" >
+                                              <input type="hidden" name="idComboPre" id="idComboPre" >
+                                              <input type="hidden" name="nombrePre" id="nombrePre" >
+                                              <input type="hidden" name="idUsuarioPre" id="idUsuarioPre">
+
+                                              <br><br><br>
+                                              <div class="col-lg-12 col-md-12 form-control"> <h3> Precio del Producto: <br><div id="precioLeer"></div></h3></div>
+                                              <div class="clearfix"></div><br><br><br>
+                                              <div class="col-lg-12 col-md-12 btn btn-success" id="EnviarACarrito" >   
+                                                    <h4>Añadir a Carrito<img src="../../imagenes/iconos/agregarCarrito.png"></h4>
+                                              </div>
+                                          </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>

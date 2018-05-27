@@ -77,13 +77,13 @@ class Carrito
 		$objCon = new Conexion();
 		$con = $objCon->conectar();
 		session_start();
-		$sql1="select idCliente as id from cliente where idUsuario='".$_SESSION['IDUSUARIO']."'";
+		$sql1="select idCliente as id from cliente where idUsuario='".$this->idCliente."'";
 		$res=$con->query($sql1);
-		$data = $res->fetch_assoc();
+		$data=$res->fetch_assoc();
+		
 
-			$sql2="INSERT INTO `metrofooddb`.`carrito` (`nombreCombo`, `idCombo`, `cantidad`, `precio`, `idCliente`) VALUES ('".$this->nombreCombo."', '".$idCombo."', '".$this->cantidad."', '".$this->precio."', '".$data['id']."');";
-			var_dump($sql2);
-			die();
+			$sql2="INSERT INTO `metrofooddb`.`carrito` (`nombreCombo`, `idCombo`, `precio`, `idCliente`) VALUES ('".$this->nombreCombo."', '".$this->idCombo."', '".$this->precio."', '".$data['id']."');";
+			
 
 			$res2= $con->query($sql2);
 			if ($res2==1) {
@@ -92,7 +92,8 @@ class Carrito
 				$info=null;
 			}
 
-			return $info;
+
+			return $sql2;
 	}
 
 	public function extraerCombos(){
@@ -105,8 +106,7 @@ class Carrito
 		$data = $res->fetch_assoc();
 
 			$sql2="SELECT * from carrito where idCliente='".$data['id']."'";
-			var_dump($sql2);
-			die();
+			
 
 			$res2= $con->query($sql2);
 			if ($res2->num_rows>0) {
@@ -151,7 +151,7 @@ class Carrito
 		$data = $res->fetch_assoc();
 
 			$sql2="DELETE FROM `metrofooddb`.`carrito` WHERE `idCliente`='".$data['id']."';";
-			
+
 			$res2= $con->query($sql2);
 			if ($res2==1) {
 				$info=$res2;
