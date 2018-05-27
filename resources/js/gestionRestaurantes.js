@@ -176,7 +176,7 @@ $(document).on("click",".editarRestaurante",  function(){
                                     {
                                     	console.log("cualquier:");
                                     	console.log(data);
-                                      $("#idUsuarioModi").val(data.idUsuario)
+                                      $("#idUsuarioModi").val(data.idUsuario);
                                       $("#modificarUsuario").val(data.usuario);
                                   
                                      //  $("#pass").val(data.idRol);

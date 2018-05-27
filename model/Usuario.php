@@ -79,8 +79,6 @@ require_once 'Conexion.php';
 			
 			$sql="SELECT usuario AS usuario, idTipoUsuario as rol, idUsuario as idUsuario from usuario where usuario = '".$user."' && pass='".$pass."' && estadoUsuario ='1'";
 
-
-
 			$info=$con->query($sql);
 			$data  = $info->fetch_assoc();
 		
@@ -144,6 +142,22 @@ require_once 'Conexion.php';
 		public function getAllRestaurantes(){
 			$con=$this->conectar();
 			$sql = " SELECT * from usuario where  idTipoUsuario=2 AND estadoUsuario=1";
+			$info=$con->query($sql);
+			
+
+				 if ($info->num_rows>0) {
+            
+		            $dato = $info;
+		        }else{
+
+		            $dato = false;
+		        }
+		        return $dato;
+		}
+
+		public function getAllRestaurantesEliminados(){
+			$con=$this->conectar();
+			$sql = " SELECT * from usuario where  idTipoUsuario=2 AND estadoUsuario=0";
 			$info=$con->query($sql);
 			
 
@@ -257,7 +271,9 @@ require_once 'Conexion.php';
 			       // $data['usuario'] = $res['usuario'];
 			        //$data['pass']= $res['pass'];
 			       // $data['nombrerol']= $res['nombre'];
+			        
 			        return json_encode($data);
+
 
 
 			    }
@@ -327,11 +343,6 @@ require_once 'Conexion.php';
 					    return json_encode($data);
 
 					    }
-
-					    
-
-				
-
 				
 	}
  ?>

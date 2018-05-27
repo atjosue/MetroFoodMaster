@@ -82,7 +82,7 @@
         </div>
 
         <div class="col-lg-4 col-md-4 mb-4">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="gestionRepartidores.php">
           <div class="card border-dark   mb-3 text-white bg-dark  ">
             <img class="card-img-top" src="../../imagenes/iconos/repartidor.png" alt="">
             <div class="card-footer border-dark  ">

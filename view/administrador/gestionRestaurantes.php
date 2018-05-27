@@ -47,7 +47,7 @@
         <a class="nav-link" href="gestion.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Gestionar usuarios Eliminados <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="restaurantesEliminados.php">Gestionar restaurates Eliminados <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href=""></a>

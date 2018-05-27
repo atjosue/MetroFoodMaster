@@ -31,7 +31,7 @@ console.log('hola');
 									
 								}else if (data=='4') {
 
-									$(location).attr('href',"../../view/repartidor/dashboardAdministrador.php");
+									$(location).attr('href',"../../view/repartidor/dashBoardRepartidor.php");
 									
 
 								}else if (data=='5') {

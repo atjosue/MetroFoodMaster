@@ -106,7 +106,6 @@
 		
 		$data = $objUsuario->getUser($idUsuario);
 
-	
 		echo $data;
 
 	}
