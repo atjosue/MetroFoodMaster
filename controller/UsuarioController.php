@@ -32,6 +32,10 @@
 			case 'modificar':
 					modificar();
 				break;
+
+			case 'eliminar':
+					eliminar();
+				break;	
 	
 
 			default:
@@ -132,6 +136,15 @@
 		$res = $objUsuario->updateUser($idUsuario);
 		echo $res;
 		*/
+	}
+
+	function eliminar()
+	{
+		$objUsuario = new Usuario();
+		$idUsuario = $_POST['idUsuario'];
+		$res = $objUsuario->deleteUser($idUsuario);
+		echo $res;
+		
 	}
 	
  ?>

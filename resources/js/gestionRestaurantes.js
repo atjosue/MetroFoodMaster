@@ -245,7 +245,77 @@ $(document).on("click",".editarRestaurante",  function(){
                                         
                        });
 
-
-
   });
+   //---------------------fin de la modificacion de restaurantes----------------------
+
+   //---------------------eliminacion de resaurantes----------------------------------
+     $(document).on("click",".eliminarRestaurante",  function(){   
+
+    var idUsuario = $(this).attr('id');
+
+                                      swal({
+                                                    title: "Advertencia",
+                                                    text: "¿Estas seguro de eliminar este registro? Si aceptas removerlo, no habra forma de recuperar los datos posteriormente",
+                                                    type: "warning",
+                                                    showCancelButton: true,
+                                                    cancelButtonText: "No",
+                                                    confirmButtonText: "Si",
+                                                    confirmButtonColor: "#00A59D",
+                                                    closeOnConfirm: true,
+                                                    closeOnCancel: true
+                                                },
+                                function (isConfirm) {
+                                  if (isConfirm) {
+                                    $.ajax({
+                                          type: 'POST',
+                                          async: false,
+                                          dataType: 'json',
+                                          data: {idUsuario:idUsuario, key:'eliminar'},
+                                          url: "../../controller/UsuarioController.php",
+                                          success: function (data)
+                                          {
+                                            if (data.estado==true) {
+                                          swal({
+                                                  title: "Exito!",
+                                                  text: data.descripcion,
+                                                  timer: 1500,
+                                                  type: 'success',
+                                                  closeOnConfirm: true,
+                                                          closeOnCancel: true
+                                                });
+                                          setTimeout( function(){ 
+                                              location.reload();
+                                          }, 1000 );
+                                          
+                                        }else{
+                                            swal({
+                                                  title: "Error!",
+                                                  text: data.descripcion,
+                                                  timer: 1500,
+                                                  type: 'error',
+                                                  closeOnConfirm: true,
+                                                          closeOnCancel: true
+                                                });
+                                        }
+                                               
+                                              
+                                          },
+                                          error: function (xhr, status)
+                                          {
+                            
+                                          }
+                                        
+                                          });                           
+                                                          
+
+                                    } else {
+                                                                
+                                                                
+                                                                
+                                            }
+                                                            
+                                                            
+                          });        
+    });
+     //----------------------------fin de la eliminacion--------------------------
 });

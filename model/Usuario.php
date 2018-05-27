@@ -143,7 +143,7 @@ require_once 'Conexion.php';
 
 		public function getAllRestaurantes(){
 			$con=$this->conectar();
-			$sql = " SELECT * from usuario where  idTipoUsuario=2";
+			$sql = " SELECT * from usuario where  idTipoUsuario=2 AND estadoUsuario=1";
 			$info=$con->query($sql);
 			
 
@@ -253,9 +253,27 @@ require_once 'Conexion.php';
 
 				    return json_encode($data);
 				       
-
-
 				    }
+
+				    public function deleteUser($idUsuario)
+					    {
+					    
+					       $sql = "UPDATE  usuario SET estadoUsuario=0, fechaEliminacion=now() WHERE idUsuario=".$idUsuario;
+					       $con= $this->conectar();
+					       $res = $con->query($sql);
+
+					        $data = array();
+					        if ($res) {
+					            $data['estado']=true;
+					            $data['descripcion']="Datos eliminados exitosamente";
+					        }else{
+					            $data['estado']=false;
+					            $data['descripcion']="Error en la eliminacion ";
+					        }
+
+					    return json_encode($data);
+
+					    }
 
 				
 
