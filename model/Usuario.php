@@ -157,6 +157,38 @@ require_once 'Conexion.php';
 		        return $dato;
 		}
 
+		public function getAllClientes(){
+			$con=$this->conectar();
+			$sql = " SELECT * from usuario where  idTipoUsuario=3 AND estadoUsuario=1";
+			$info=$con->query($sql);
+			
+
+				 if ($info->num_rows>0) {
+            
+		            $dato = $info;
+		        }else{
+
+		            $dato = false;
+		        }
+		        return $dato;
+		}
+
+		public function getAllClientesEliminados(){
+			$con=$this->conectar();
+			$sql = " SELECT * from usuario where  idTipoUsuario=3 AND estadoUsuario=0";
+			$info=$con->query($sql);
+			
+
+				 if ($info->num_rows>0) {
+            
+		            $dato = $info;
+		        }else{
+
+		            $dato = false;
+		        }
+		        return $dato;
+		}
+
 		 public function agregarUsuarioRestaurante(){
 
 		    	$con = $this->conectar();
@@ -213,7 +245,7 @@ require_once 'Conexion.php';
 			    {
 			    	$con=$this->conectar();
 			        
-			        $sql = "SELECT * FROM `usuario` WHERE idTipoUsuario=2 AND estadoUsuario=1 AND idUsuario=".$idUsuario;
+			        $sql = "SELECT * FROM `usuario` WHERE estadoUsuario=1 AND idUsuario=".$idUsuario;
 			        $info=$con->query($sql);
 			        $res=$info->fetch_assoc();
 
@@ -229,6 +261,7 @@ require_once 'Conexion.php';
 
 
 			    }
+
 
 			     public function updateUser($idUsuario)
 				    {
@@ -274,6 +307,28 @@ require_once 'Conexion.php';
 					    return json_encode($data);
 
 					    }
+
+					     public function recuperarUsuario($idUsuario)
+					    {
+					    
+					       $sql = "UPDATE  usuario SET estadoUsuario=1, fechaModificacionUsuario=now() WHERE idUsuario=".$idUsuario;
+					       $con= $this->conectar();
+					       $res = $con->query($sql);
+
+					        $data = array();
+					        if ($res) {
+					            $data['estado']=true;
+					            $data['descripcion']="Usuario recuperado exitosamente";
+					        }else{
+					            $data['estado']=false;
+					            $data['descripcion']="Error en la Recuperacion ";
+					        }
+
+					    return json_encode($data);
+
+					    }
+
+					    
 
 				
 

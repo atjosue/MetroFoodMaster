@@ -27,7 +27,7 @@
 
 			case 'solicitarInfo':
 				solicitarInfo();
-					break;	
+				break;		
 
 			case 'modificar':
 					modificar();
@@ -35,7 +35,11 @@
 
 			case 'eliminar':
 					eliminar();
-				break;	
+				break;
+
+			case 'recuperar':
+					recuperar();
+				break;		
 	
 
 			default:
@@ -87,6 +91,8 @@
 
 			echo $res;
 		}
+
+	
 	function primeraVez(){
 		$objUsuario= new Usuario();
 		$res=$objUsuario->primeraVez();
@@ -105,7 +111,7 @@
 
 	}
 
-	function modificar()
+		function modificar()
 	{
 		$objUsuario = new Usuario();
 		$dataUsuario = $_POST['info'];
@@ -143,6 +149,15 @@
 		$objUsuario = new Usuario();
 		$idUsuario = $_POST['idUsuario'];
 		$res = $objUsuario->deleteUser($idUsuario);
+		echo $res;
+		
+	}
+
+	function recuperar()
+	{
+		$objUsuario = new Usuario();
+		$idUsuario = $_POST['idUsuario'];
+		$res = $objUsuario->recuperarUsuario($idUsuario);
 		echo $res;
 		
 	}

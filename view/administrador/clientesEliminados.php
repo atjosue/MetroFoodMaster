@@ -8,14 +8,13 @@
   }
 */
 
- require_once '../../controller/RestauranteController.php';
- require_once '../../model/Usuario.php'; 
-
+ require_once'../../model/Usuario.php'; 
+ 
  ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Gestion de restaurantes</title>
+		<title>Gestion de Clientes</title>
 		
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="../../pluggins/bootstrap/css/bootstrap.css">
@@ -23,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="../../pluggins/dataTable/dataTables.material.min.css">
 <link rel="stylesheet" type="text/css" href="../../pluggins/sweetalert-master/dist/sweetalert.css">
 
-<!-- JS <script type="text/javascript" src="../../resources/js/Restaurante.js"></script>-->
+<!-- JS -->
 <script type="text/javascript" src="../../pluggins/pluginess/jquery/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="../../pluggins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../pluggins/dataTable/jquery.dataTables.min.js"></script>
@@ -31,8 +30,10 @@
 <script type="text/javascript" src="../../pluggins/jQuery-Mask/src/jquery.mask.js"></script>
 <script type="text/javascript" src="../../pluggins/sweetalert-master/dist/sweetalert.min.js"></script>	
 
-<script type="text/javascript" src="../../resources/js/gestionRestaurantes.js"></script>
 
+
+
+		<script type="text/javascript" src="../../resources/js/Clientes.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -43,15 +44,24 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item " >
         <a class="nav-link" href="gestion.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">Gestionar usuarios Eliminados <span class="sr-only">(current)</span></a>
+      <li class="nav-item ">
+        <a class="nav-link" href="gestionClientes.php">Gestionar Clientes</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href=""></a>
+     <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
       </li>
+  -->
       
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -65,45 +75,43 @@
 		<div class="container">
 			
 				<div class="col-md-9" style="margin-top: 10px;">
-		            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Restaurantes</p>
-		            <p class="robo" style="font-weight: 300; font-size: 14px; height: 40px;">Gesti&oacute;n  de restaurantes</p>
+		            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Clientes</p>
+		            <p class="robo" style="font-weight: 300; font-size: 14px; height: 40px;">Gesti&oacute;n  de clientes</p>
         		</div>
 				<div class="col-md-3" style="margin-top: 10px;">
 					<div class="btn-group pull-right">
 	                   <a href="#" class="admin-menu-navi">
-	                      <button class="btn btn-primary  btn-sm " style="margin-left: 5px;" id="nuevoRestaurante">Nuevo</button>
+	                     
 	                   </a>
-          </div>
-                <br><br>
+                    </div>
 				</div>
 				<div class="clearfix"></div>
 				 <div class="col-md-12" style="margin-top: 0px;">
-					<table id="listadoRestaurantes" class="mdl-data-table" cellspacing="1" width="100%">
+					<table id="listadoClientes" class="mdl-data-table" cellspacing="1" width="100%">
 				 		<thead>
 				 			<th>ID</th>
-				 			<th>Usuario</th>
+				 			<th>Nombre de usuario </th>
 				 			<th>Contraseña</th>
-				 			<th>Fecha de Creacion</th>
-              <th>Ultima Modificacion</th>
-              <th>Acciones</th>              
+				 			<th>Fecha de ingreso</th>
+              <th>Fecha de ultima modificacion</th>              
+				 			<th>Acciones</th>
 				 		</thead>
 				 		<tbody>
 				 		<?php 
-			 				$objUsuario = new Usuario();
-			 				$data = $objUsuario->getAllRestaurantes();
+			 				$objCliente = new Usuario();
+			 				$data = $objCliente->getAllClientesEliminados();
 			 				if ($data!=false) {
 			 					foreach ($data as  $value) {
 			 						
 			 						echo "<tr>
-			 								<td>".$value['idUsuario']."</td>
+                      <td>".$value['idUsuario']."</td>
 			 								<td>".$value['usuario']."</td>
 			 								<td>".$value['pass']."</td>
-                      <td>".$value['fechaCreacionUsuario']."</td>
-                      <td>".$value['fechaModificacionUsuario']."</td>
-                     
+			 								<td>".$value['fechaCreacionUsuario']."</td>
+			 								<td>".$value['fechaModificacionUsuario']."</td>
+			 			
 			 								<td>
-			 									<input type='button' class='btn-success btn-sm editarRestaurante' id='".$value['idUsuario']."' value='Editar'>
-			 									<input type='button' class='btn-danger btn-sm eliminarRestaurante' id='".$value['idUsuario']."' value='Eliminar'>
+			 									<input type='button' class='btn-primary btn-sm recuperarCliente' id='".$value['idUsuario']."' value='Recuperar'>
 			 								</td>
 			 						      </tr>";
 			 					}
@@ -126,17 +134,16 @@
 </html>
 
 
-
-<!-- Modal de ingreso de Restaurante -->
+<!-- Modal de ingreso de Cliente -->
 <div class="modal " id="modalRegistrar" role="dialog" aria-labelledby="myModalLabel" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header " Style="height:45px;">
-                    <span class="robo" style="font-size: 20px;">Agregar Restaurante</span>
+                    <span class="robo" style="font-size: 20px;">Agregar Cliente</span>
                 </div>
                 <div class="modal-body" >
                   
-                      <div class="row" id="infoNuevoRestaurante">
+                      <div class="row" id="infoNuevoCliente">
                           <div class="form-column col-md-6 col-sm-4 col-xs-6">
                                  <div class="form-group required">
                                   <label for="nombre" class="control-label">Usuario</label>
@@ -164,7 +171,7 @@
 
                     </div>
                     <div>
-                    <button class="btn btn-primary  btn-sm " id="agregarRestaurante" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="agregarCliente" >Guardar</button>
                     <button class="btn btn-primary  btn-sm " id="cerrarModalNuevo" >Cancelar</button>
                     
 
@@ -178,16 +185,16 @@
         </div> 
 </div> 
 
-<!-- modal modificacion restaurante -->
+<!-- modal modificacion Cliente -->
 <div class="modal " id="modalModificar" role="dialog"  >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header " Style="height:45px;">
-                    <span class="robo" style="font-size: 20px;">Modificar Restaurante</span>
+                    <span class="robo" style="font-size: 20px;">Modificar Cliente</span>
                 </div>
                 <div class="modal-body" >
                   
-                      <div class="row" id="infoModificarRestaurante">
+                      <div class="row" id="infoModificarCliente">
                           <div class="form-column col-md-6 col-sm-4 col-xs-6">
                                  <div class="form-group required">
                                   <label for="nombre" class="control-label">Nombre</label>
@@ -217,7 +224,7 @@
 
                     </div>
                     <div>
-                    <button class="btn btn-primary  btn-sm " id="modificarRestaurante" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="modificarCliente" >Guardar</button>
                     <button class="btn btn-primary  btn-sm " id="cerrarModalModi" >Cancelar</button>
                     
 

@@ -8,7 +8,7 @@
   }
 */
 
- require_once'../../model/Cliente.php'; 
+ require_once'../../model/Usuario.php'; 
  
  ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@
         <a class="nav-link" href="gestion.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="">Gestionar Clientes Eliminados</a>
+        <a class="nav-link" href="clientesEliminados.php">Gestionar Clientes Eliminados</a>
       </li>
      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +81,7 @@
 				<div class="col-md-3" style="margin-top: 10px;">
 					<div class="btn-group pull-right">
 	                   <a href="#" class="admin-menu-navi">
-	                      <button class="btn btn-primary  btn-sm " style="margin-left: 5px;" id="nuevoRestaurante">Nuevo</button>
+	                     
 	                   </a>
                     </div>
 				</div>
@@ -90,27 +90,29 @@
 					<table id="listadoClientes" class="mdl-data-table" cellspacing="1" width="100%">
 				 		<thead>
 				 			<th>ID</th>
-				 			<th>Nombres </th>
-				 			<th>Apellidos</th>
-				 			<th>Correo Electronico</th>
+				 			<th>Nombre de usuario </th>
+				 			<th>Contraseña</th>
+				 			<th>Fecha de ingreso</th>
+              <th>Fecha de ultima modificacion</th>              
 				 			<th>Acciones</th>
 				 		</thead>
 				 		<tbody>
 				 		<?php 
-			 				$objCliente = new Cliente();
-			 				$data = $objCliente->getAll();
+			 				$objCliente = new Usuario();
+			 				$data = $objCliente->getAllClientes();
 			 				if ($data!=false) {
 			 					foreach ($data as  $value) {
 			 						
 			 						echo "<tr>
-			 								<td>".$value['idCliente']."</td>
-			 								<td>".$value['nombreCliente']."</td>
-			 								<td>".$value['apellidoCliente']."</td>
-			 								<td>".$value['correoCliente']."</td>
+                      <td>".$value['idUsuario']."</td>
+			 								<td>".$value['usuario']."</td>
+			 								<td>".$value['pass']."</td>
+			 								<td>".$value['fechaCreacionUsuario']."</td>
+			 								<td>".$value['fechaModificacionUsuario']."</td>
 			 			
 			 								<td>
-			 									<input type='button' class='btn-success btn-sm editarUsuario' id='".$value['idCliente']."' value='Editar'>
-			 									<input type='button' class='btn-danger btn-sm eliminarUsuario' id='".$value['idCliente']."' value='Eliminar'>
+			 									<input type='button' class='btn-success btn-sm editarCliente' id='".$value['idUsuario']."' value='Editar'>
+			 									<input type='button' class='btn-danger btn-sm eliminarCliente' id='".$value['idUsuario']."' value='Eliminar'>
 			 								</td>
 			 						      </tr>";
 			 					}
@@ -133,53 +135,47 @@
 </html>
 
 
-
-<!-- Modal de unsercion de usuario -->
-<div class="modal fade modal" id="modalIngresoUsuario" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal de ingreso de Cliente -->
+<div class="modal " id="modalRegistrar" role="dialog" aria-labelledby="myModalLabel" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header " Style="height:45px;">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                    <span class="robo" style="font-size: 20px;">Agregar Usuario</span>
+                    <span class="robo" style="font-size: 20px;">Agregar Cliente</span>
                 </div>
                 <div class="modal-body" >
-                	
-                      <div class="row" id="infoUsuario">
-                          <div class="form-column col-md-4 col-sm-4 col-xs-4">
+                  
+                      <div class="row" id="infoNuevoCliente">
+                          <div class="form-column col-md-6 col-sm-4 col-xs-6">
                                  <div class="form-group required">
-                                     <label for="nombreCiclo" class="control-label">Username</label>
-                                     <input type="text" class="form-control requerido"  
-                                            placeholder="Username" name="username"  required>
+                                  <label for="nombre" class="control-label">Usuario</label>
+                                 <input type="text" class="form-control"  
+                                    placeholder="" name="usuario" id="usuario"  required="true">
                                  </div>
                           </div>
-                           <div class="form-column col-md-4 col-sm-4 col-xs-4">
+                           
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
                             <div class="form-group required">
-                              <label for="password" class="control-label">Password</label>            
-                              <input type="password"  name="password" class="form-control" id="password" required >
+                              <label for="precio" class="control-label">Contraseña</label>            
+                              <input type="password"  name="pass" class="form-control" id="pass" required>
                             </div>
                           </div>
-                          <div class="form-column col-md-4 col-sm-4 col-xs-4">
+                          <div class="clearfix"></div>
+                          <div class="form-column col-md-7 col-sm-7 col-xs-7">
                             <div class="form-group required">
-                              <label for="repassword" class="control-label">Re-Password</label>            
-                              <input type="password"  name="repassword" class="form-control" id="repassword" required>
+                              <label for="descripcion" class="control-label">Confirmar Contraseña</label>            
+                              <input type="password"  name="repass" class="form-control" id="repass" required >
                             </div>
                           </div>
-                          <div class="form-column col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-group required">
-                              <label for="rol" class="control-label">Rol</label>            
-                              <select name="rol" class="form-control">
                             
-                              	
-                              </select>
-                            </div>
-                          </div>
-
-            
+                          <div class="clearfix"></div>  
                           <div class="clearfix"></div>
 
                     </div>
                     <div>
-                  	<button class="btn btn-primary  btn-sm " id="agregarUsuario" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="agregarCliente" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="cerrarModalNuevo" >Cancelar</button>
+                    
+
                   </div>
 
               </div>         
@@ -188,4 +184,58 @@
                </div>
             </div>
         </div> 
-</div>    
+</div> 
+
+<!-- modal modificacion Cliente -->
+<div class="modal " id="modalModificar" role="dialog"  >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header " Style="height:45px;">
+                    <span class="robo" style="font-size: 20px;">Modificar Cliente</span>
+                </div>
+                <div class="modal-body" >
+                  
+                      <div class="row" id="infoModificarCliente">
+                          <div class="form-column col-md-6 col-sm-4 col-xs-6">
+                                 <div class="form-group required">
+                                  <label for="nombre" class="control-label">Nombre</label>
+                                 <input type="text" class="form-control"  
+                                    placeholder="" name="usuario" id="modificarUsuario"  required="true">
+                                 </div>
+                          </div>
+                           
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group required">
+                              <label for="precio" class="control-label">Contraseña</label>            
+                              <input type="password"  name="pass" class="form-control" id="modificarPass" required>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <div class="form-column col-md-7 col-sm-7 col-xs-7">
+                            <div class="form-group required">
+                              <label for="descripcion" class="control-label">Confirmar Contraseña</label>            
+                              <input type="password"  name="repass" class="form-control" id="modificarRepass" required >
+                            </div>
+                          <input type="hidden" name="idUsuarioModi" id="idUsuarioModi">
+
+                          </div>
+                            
+                          <div class="clearfix"></div>  
+                          <div class="clearfix"></div>
+
+                    </div>
+                    <div>
+                    <button class="btn btn-primary  btn-sm " id="modificarCliente" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="cerrarModalModi" >Cancelar</button>
+                    
+
+                  </div>
+
+              </div>         
+               <div class="modal-footer" id="modalFooter" >
+                  
+               </div>
+            </div>
+        </div> 
+</div> 
+
