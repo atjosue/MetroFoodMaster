@@ -152,12 +152,25 @@
 		
 
     	$sql2 = "INSERT INTO `metrofooddb`.`combo` (`nombreCombo`, `descripcionCombo`, `precioCombo`, `estadoCombo`, `fechaCreacionCombo`, `fechaModificacionCombo`, `idRestaurante`, `img`) VALUES ('".$this->nombreProducto."', '".$this->descripcionProducto."', '".$this->precioProducto."', '".$this->estado."', '".$this->fechaCreacion."', '".$this->fechaModificacion."', '".$this->idRestaurante."', '".$this->img."');";
+    	
 
     	$res=$con->query($sql2);
 
     	
     	return $res;
     } 
+
+    public function traerCombo($id){
+
+    	$objCon = new Conexion();
+    	$con = $objCon->conectar();
+
+    	$sql = "SELECT * FROM combo where idCombo='".$id."';";
+
+    	$info = $con->query($sql);
+    	$data = $info->fetch_assoc();
+    		return json_encode($data);
+    }
 }
 
 

@@ -18,6 +18,9 @@ if (isset($_POST['key'])) {
 			case 'Acarrito':
 				Acarrito();
 				break;
+			case 'traerCombo':
+				traerCombo();
+				break;
 			
 			default:
 				
@@ -75,14 +78,25 @@ function verificarImagen(){
 		$objCarrito->setPrecio($dataProd[0]->value);
 		$objCarrito->setIdCombo($dataProd[1]->value);
 		$objCarrito->setNombreCombo($dataProd[2]->value);
-		$objCarrito->setIdCliente($dataProd[3]->value);
+		
 
 		$res=$objCarrito->agregarCombo();
+
+		
 
 		echo $res;
 
 
 	} 
+
+	function traerCombo(){
+		$id = $_POST['idUsuario'];
+
+		$objProducto =  new Producto();
+		$data=$objProducto->traerCombo($id);
+		
+		echo $data;
+	}
 	
 
  ?>

@@ -120,7 +120,7 @@
                               <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                              <a  class="btn btn-primary agregarACarrito botonLeer" id="'.$value['idCombo'].'" name="'.$value['img'].'">Leer mas...</a>
+                              <a  class="btn btn-primary agregarACarrito" id="'.$value['idCombo'].'" name="'.$value['img'].'">Leer mas...</a>
                             </div>
                           </div>
                         </div>
@@ -186,7 +186,7 @@
                                     <div class="row">
                                       <br><br><br>
                                           <div class="col-sm-8 col-md-8 col-xs-8 ">
-                                                <h4><div id="nombreLeer"></div><h4> <br>
+                                                <h4><p id="nombreLeer"> <br></p><h4>
                                                   <br><br>
                                               <h5><div id="descripcionLeer"></div></h5>
 
@@ -197,7 +197,7 @@
                                               <input type="hidden" name="precioPre" id="precioPre" >
                                               <input type="hidden" name="idComboPre" id="idComboPre" >
                                               <input type="hidden" name="nombrePre" id="nombrePre" >
-                                              <input type="hidden" name="idUsuarioPre" id="idUsuarioPre">
+                                              
 
                                               <br><br><br>
                                               <div class="col-lg-12 col-md-12 form-control"> <h3> Precio del Producto: <br><div id="precioLeer"></div></h3></div>
@@ -210,4 +210,4 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+</div>

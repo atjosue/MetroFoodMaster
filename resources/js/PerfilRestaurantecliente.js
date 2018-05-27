@@ -7,51 +7,56 @@ $(document).ready(function(){
 
 //***************************************************Capturar id para abrir informacion en el modal COMBO**********************************
 
-	$(document).on("click",".botonLeer",function(){
+	
 
-		var  img = $(this).attr("name");
+			$(document).on("click",".agregarACarrito", function(){
+		 	var idUsuario = $(this).attr("id");
+			console.log(idUsuario);		 
+		 		$.ajax({
 
-		$.ajax({
-			type:'POST',
-			data: {img,img key:''}
-		});
+				type:'POST',
+				dataType: 'json',
+				data: {idUsuario,idUsuario,key:'traerCombo'},
+				url:"../../controller/ProductoController.php",
+				success : function(data){
+
+					$("#nombrePre").val(data.nombreCombo);
+					$("#idComboPre").val(data.idCombo);
+					$("#precioPre").val(data.precioCombo);
+				
+					$("#nombreLeer").text(data.nombreCombo);
+					$("#descripcionLeer").html(data.descripcionCombo);
+					$("#precioLeer").html("<br>$".concat(data.precioCombo));
+					$("#comboView").show();
+					
+				}
+			});
+
+		 	
 
 
-		var  img = $(this).attr("name");
-		var res1 ='#';
-		
 
-		var res2 = res1.concat(img);
 
-		
 
-		$(res2).show();
-
+//----------------------------------------------------- cerrar modales.
 
 		$(".close").on("click",function(){
 
-		$(".comboView").hide();
+				$("#comboView").hide();
 
-	});
+		});
 		
 
 	});
 //******************************************************Fin de captura de id para el modal COMBO**************************************
 
 //****************************************************BOTON AGREGAR AL CARRITO******************************************************
-		$(document).on("click",".prueba", function(){
-
-				var  img2 = $(this).attr("name");
-				var res3 ='#';
-
-				console.log(img2);
-
-				var res4 = res3.concat(img2);
+	
 
 			
 
 
-			$(res4).on("click", function(){
+			$("#EnviarACarrito").on("click", function(){
 			
 			var formDatos = JSON.stringify($('#formDatos :input').serializeArray());
 
@@ -73,14 +78,13 @@ $(document).ready(function(){
 									title:"Exito!",
 									text: "El combo se ha agregado al carrito",
 									timer: 1800,
-									type: 'error',
+									type: 'success',
 									closeOnConfirm: true,
 									closeOnCancel: true,
 
 								});
 
-								$("#usuario").val("");
-								$("#usuario").focus();
+								
 							}else{
 								swal({
 									title:"UPS...!",
@@ -92,14 +96,16 @@ $(document).ready(function(){
 
 								});
 							}
+							$("#comboView").hide();
+								$("#nombrePre").val("");
+								$("#idComboPre").val("");
+								$("#precioPre").val("");
 						}
 					});
 
 
 		});
 
-		});
-		
 		
 
 

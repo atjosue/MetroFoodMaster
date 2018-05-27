@@ -77,10 +77,9 @@ class Carrito
 		$objCon = new Conexion();
 		$con = $objCon->conectar();
 		session_start();
-		$sql1="select idCliente as id from cliente where idUsuario='".$this->idCliente."'";
+		$sql1="select idCliente as id from cliente where idUsuario='".$_SESSION['IDUSUARIO']."'";
 		$res=$con->query($sql1);
 		$data=$res->fetch_assoc();
-		
 
 			$sql2="INSERT INTO `metrofooddb`.`carrito` (`nombreCombo`, `idCombo`, `precio`, `idCliente`) VALUES ('".$this->nombreCombo."', '".$this->idCombo."', '".$this->precio."', '".$data['id']."');";
 			
@@ -92,8 +91,7 @@ class Carrito
 				$info=null;
 			}
 
-
-			return $sql2;
+			return $info;
 	}
 
 	public function extraerCombos(){
