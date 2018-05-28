@@ -116,7 +116,7 @@ function verificarImagen(){
 		echo $data;
 	}
 
-<<<<<<< HEAD
+
 	function contarCarrito(){
 		session_start();
 
@@ -125,7 +125,7 @@ function verificarImagen(){
 		$res=$objCarrito->contarCarrito();
 		echo $res;
 
-=======
+
 	function solicitarInfo()
 	{
 		$objUsuario = new Producto();
