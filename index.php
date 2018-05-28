@@ -33,9 +33,6 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Carrito</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="#">Contactanos</a>
                   </li>
                   <li class="nav-item">
@@ -46,6 +43,7 @@
               </div>
             </div>
           </nav>
+        
 
     <!-- Page Content -->
    <div class="container">
