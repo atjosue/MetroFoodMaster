@@ -302,10 +302,9 @@ require_once 'Conexion.php';
 				    public function deleteUser($idUsuario)
 					    {
 					    
-					       $sql = "UPDATE  usuario SET estadoUsuario=0, fechaEliminacion=now() WHERE idUsuario=".$idUsuario;
+					       $sql = "UPDATE  usuario SET estadoUsuario=0, fechaModificacionUsuario=now() WHERE idUsuario=".$idUsuario;
 					       $con= $this->conectar();
 					       $res = $con->query($sql);
-
 					        $data = array();
 					        if ($res) {
 					            $data['estado']=true;

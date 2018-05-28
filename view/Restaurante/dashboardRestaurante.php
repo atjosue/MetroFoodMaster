@@ -60,6 +60,9 @@
       <li class="nav-item">
         <a class="nav-link" href="gestionRepartidores.php">Repartidores</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="combosDesactivados.php">Combos Desactivados</a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -135,7 +138,7 @@
                             </div>
                             <div class="card-footer">
                               <a  class="btn btn-primary editarCombo" id="'.$value['img'].'" value="Editar">Editar</a>
-                              <a  class="btn btn-primary eliminarCombo" id="'.$value['img'].'" value="Eliminar">Eliminar</a>
+                              <a  class="btn btn-outline-danger desactivarCombo" id="'.$value['img'].'" value="Eliminar">Desactivar</a>
                             </div>
                           </div>
                         </div>';
@@ -274,6 +277,98 @@
               <br />
               <br/>
               <button class="btn btn-success crop_image">Guardar</button>
+          </div>
+        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal de modificacion de Producto -->
+<div class="modal " id="modalModificacionProducto" role="dialog" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header " Style="height:45px;">
+                    
+                    <span class="robo" style="font-size: 20px;">Modificar Combo</span>
+                </div>
+                <div class="modal-body" >
+                  
+                      <div class="row" id="infoProductoModi">
+                          <div class="form-column col-md-6 col-sm-4 col-xs-6">
+                                 <div class="form-group required">
+                                  <label for="nombre" class="control-label">Nombre</label>
+                                 <input type="text" class="form-control"  
+                                    placeholder="" name="nombre" id="nombre2"  required="true">
+                                 </div>
+                          </div>
+                           
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group required">
+                              <label for="precio" class="control-label">Precio</label>            
+                              <input type="text"  name="precio" class="form-control" id="precio2" required>
+                            </div>
+                          </div>
+                           <div class="form-column ">
+                            <div class="form-group required">
+                              <label for="prueba" class="control-label"></label>            
+                   <input type="hidden"  name="prueba2" class="form-control" id="prueba2">
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <div class="form-column col-md-7 col-sm-7 col-xs-7">
+                            <div class="form-group required">
+                              <label for="descripcion" class="control-label">Descripción</label>            
+                              <input type="text"  name="descripcion" class="form-control" id="descripcion2" required >
+                            </div>
+                          </div>
+                            
+                            <div class="clearfix"></div>
+                              <div class="clearfix"></div>
+                          <div class="form-column col-md-4 col-sm-4 col-xs-4 btn-file" >
+                            <input class="form-control-file" type="file" name="upload_image2" id="upload_image2"/>
+                          </div>
+                          <input type="hidden" name="idComboModi" id="idComboModi">
+            
+                          <div class="clearfix"></div>
+
+                    </div>
+                    <div>
+                    <button class="btn btn-primary  btn-sm " id="modificarCombo" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="cerrarModalModi" >Cancelar</button>
+                    
+
+                  </div>
+
+              </div>         
+               <div class="modal-footer" id="modalFooter" >
+                  
+               </div>
+            </div>
+        </div> 
+</div> 
+
+<!-- modal croppie2 -->
+<div id="uploadimageModal2" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">ajustar tamaño de la imagen</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+            <div class="col-md-8 text-center">
+              <div id="image_demo2" style="width:350px; margin-top:30px"></div>
+            </div>
+            <div class="col-md-4" style="padding-top:30px;">
+              <br />
+              <br />
+              <br/>
+              <button class="btn btn-success crop_image2">Guardar</button>
           </div>
         </div>
           </div>
