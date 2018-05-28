@@ -21,6 +21,18 @@ if (isset($_POST['key'])) {
 			case 'traerCombo':
 				traerCombo();
 				break;
+			case 'solicitarInfo':
+				solicitarInfo();
+				break;
+			case 'modificar':
+				modificar();
+				break;
+			case 'eliminar':
+					eliminar();
+				break;	
+			case 'recuperar':
+					recuperar();
+				break;					
 			
 			default:
 				
@@ -96,6 +108,70 @@ function verificarImagen(){
 		$data=$objProducto->traerCombo($id);
 		
 		echo $data;
+	}
+
+	function solicitarInfo()
+	{
+		$objUsuario = new Producto();
+		$idUsuario = $_POST['idComb'];
+
+		$data = $objUsuario->getCombo($idUsuario);
+
+		echo $data;
+
+	}
+
+	function modificar()
+	{
+		$objCombo = new Producto();
+		$dataCombo = $_POST['info'];
+		$decodeInfo = json_decode($dataCombo);
+
+		$nombre = $decodeInfo[0]->value;
+		$precio= $decodeInfo[1]->value;
+		$prueba = $decodeInfo[2]->value;
+		$descripcion=$decodeInfo[3]->value;
+		$idCombo=$decodeInfo[4]->value;
+		$fechaModi= date("y-m-d");
+
+
+		$objCombo->setNombreProducto($nombre);
+		$objCombo->setPrecioProducto($precio);
+		$objCombo->setImg($prueba);
+		$objCombo->setDescripcionProducto($descripcion);
+		$objCombo->setId($idCombo);	
+		$objCombo->setFechaModificacion($fechaModi);		
+
+
+		$res = $objCombo->updateCombo($idCombo);
+		echo $res;
+
+	/*	$objUsuario->setUsuario($usuario);
+		$objUsuario->setPass($pass);
+		$objUsuario->setFechaModificacionUsuario;
+		$res = $objUsuario->updateUser($idUsuario);
+		echo $res;
+		*/
+	}
+
+	function eliminar()
+	{
+		$objCombo = new Producto();
+		$idCombo = $_POST['idCombo'];
+
+
+		$res = $objCombo->deleteCombo($idCombo);
+		echo $res;
+		
+	}
+
+	function recuperar()
+	{
+		$objCombo = new Producto();
+		$idCombo = $_POST['idCombo'];
+		$res = $objCombo->recuperarCombo($idCombo);
+		echo $res;
+		
 	}
 	
 

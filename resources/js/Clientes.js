@@ -39,6 +39,8 @@ $(document).ready(function(){
 	
 
 	//FIN DEL VIEW REGISTRAR CLIENTE
+
+//EDICION DEL CLIENTE
 $(document).on("click",".editarCliente",  function(){   
         
 
@@ -125,9 +127,9 @@ $(document).on("click",".editarCliente",  function(){
                        });
 
   });
-   //---------------------fin de la modificacion de restaurantes----------------------
+   //---------------------fin de la modificacion de CLIENTE----------------------
 
-      //---------------------recuperacion de resaurantes----------------------------------
+      //---------------------ELIMINACION de resaurantes----------------------------------
      $(document).on("click",".eliminarCliente",  function(){   
 
     var idUsuario = $(this).attr('id');
