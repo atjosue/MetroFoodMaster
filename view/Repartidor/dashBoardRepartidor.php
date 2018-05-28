@@ -42,10 +42,7 @@
       </li>
   -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
     <li></li>
     <a href="../../app/cerrarSesion.php"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Cerrar sesión</button></a>
   </div>
@@ -53,17 +50,34 @@
 
 <!-- restarurantes -->
 <div class="container">
-  <div  class="col-md-12"></div>
-  <div class="clearfix"></div>
-  <div>(Nombre del repartidor) <br> <h4>Bienvenido</h4></div>
-  <div class="col-xs-6"></div>
-  <div class="col-xs-6"><div class="btn btn-lg btn-warning btn-block btn-signin"  id="pedidos"> Tiene una entrega </div>
-</div>
-  
+    <?php 
+      require_once'../../model/Repartidor.php';
+      require_once'../../model/Pedido.php';
+    
+      $objRepartidor= new Repartidor();
+      $info = $objRepartidor->getAllRepartidor();
+      $dataR =$info->fech_assoc();
 
-  <div class="col-md-6"> 
+      $nombreCompleto = $dataR['nombre'].concat( $dataR['nombre']);
+      
+      $objPedido = new Pedido();
+      $objPedido->pedidos();
 
-  </div>
+      echo '  
+            <div class="row col-md-12 col-xs-12 col-sm-12">
+
+                <div>$dataR[''] <br> <h4>Bienvenido</h4></div>
+            <div class="col-xs-6"></div>
+          <div class="col-xs-6">
+              <div class="btn btn-lg btn-warning rounded-circle" id="pedidos"> <br><br><br><br><br>Tiene una entrega </div>
+         </div>
+
+
+            </div>
+      ' ;
+
+
+     ?>
 </div>
 </body>
  <!-- Footer -->

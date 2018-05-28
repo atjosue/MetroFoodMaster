@@ -58,11 +58,14 @@ class Repartidor
 	    	$this->fechaModificacion = $fechaModificacion;
 	}
 	
-	public function getAll()
+	public function getAllRepartidor()
     {
     	$objCon = new Conexion();
     	$con = $objCon->conectar();
-        $sqlAll = "SELECT * from repartidor WHERE estadoRepartidor = 1";
+    	session_start();
+      	
+
+        $sqlAll = "SELECT * from repartidor WHERE estadoRepartidor = 1 && idUsuario='".$_SESSION['IDUSUARIO']."' ";
         $info = $con->query($sqlAll);
         if ($info->num_rows>0) {
             
@@ -74,6 +77,7 @@ class Repartidor
        
         return $dato;
     }
+
 
 }
 
