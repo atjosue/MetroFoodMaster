@@ -20,6 +20,9 @@
 			case 'agregarRestaurante':
 					agregarRestaurante();
 				break;
+			case 'agregarRepartidor':
+					agregarRepartidor();
+				break;	
 
 			case 'first':
 				primeraVez();
@@ -81,6 +84,22 @@
 			$info = json_decode($_POST['dataUsuario']);
 
 			$objUsuario =  new Usuario();
+			
+			$objUsuario->setUsuario($info[0]->value);
+			$objUsuario->setPass($info[1]->value);
+			$objUsuario->setFechaCreacionUsuario(date('y-m-d'));
+			$objUsuario->setFechaModificacionUsuario(date('y-m-d'));
+				
+			$res=$objUsuario->agregarUsuarioRestaurante();
+
+			echo $res;
+		}
+
+		function agregarRepartidor(){
+
+			$info = json_decode($_POST['dataRepartidor']);
+
+			$objRepartidor =  new Usuario();
 			
 			$objUsuario->setUsuario($info[0]->value);
 			$objUsuario->setPass($info[1]->value);

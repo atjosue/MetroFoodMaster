@@ -188,8 +188,8 @@ function verificarImagen(){
 		$res = $objCombo->recuperarCombo($idCombo);
 		echo $res;
 		
->>>>>>> 564906ef8f8e3049b5275a29f5dfb19824e42035
 	}
+}
 	
 
  ?>
