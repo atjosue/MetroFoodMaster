@@ -21,6 +21,9 @@ if (isset($_POST['key'])) {
 			case 'traerCombo':
 				traerCombo();
 				break;
+			case 'contarCarro':
+				contarCarrito();
+				break;
 			
 			default:
 				
@@ -96,6 +99,16 @@ function verificarImagen(){
 		$data=$objProducto->traerCombo($id);
 		
 		echo $data;
+	}
+
+	function contarCarrito(){
+		session_start();
+
+		$objCarrito = new carrito();
+		$objCarrito->setIdCliente($_SESSION['IDUSUARIO']);
+		$res=$objCarrito->contarCarrito();
+		echo $res;
+
 	}
 	
 

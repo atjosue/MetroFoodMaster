@@ -1,8 +1,9 @@
 
-
 $(document).ready(function(){
 
 	$("#comboView").hide();
+
+
 
 
 //***************************************************Capturar id para abrir informacion en el modal COMBO**********************************

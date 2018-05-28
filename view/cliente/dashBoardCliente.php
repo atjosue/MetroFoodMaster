@@ -36,10 +36,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Carrito <img src="../../imagenes/iconos/agregarCarrito.png"></a>
+        <a class="nav-link" href="ordenar.php">Carrito <img src="../../imagenes/iconos/agregarCarrito.png"></a>
       </li>
       <li class="nav-item active">
-        <p style=" color:white; font-size: 20px; margin-top: 5px; ">1</p>
+        <p style=" color:white; font-size: 20px; margin-top: 5px; " id="contadorCarrito"></p>
       </li>
      
     </ul>

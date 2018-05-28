@@ -1,4 +1,16 @@
 $(document).ready(function(){
+	
+	
+	$.ajax({
+		type:'POST',
+		data:{key:'contarCarro'},
+		url:"../../controller/ProductoController.php",
+		success: function(data){
+					
+
+			$("#contadorCarrito").html();
+		}
+	});
 
 		$(document).on("click",".verPerfil", function(){
 		 	var idUsuario = $(this).attr("id");

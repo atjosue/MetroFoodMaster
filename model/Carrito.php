@@ -161,6 +161,19 @@ class Carrito
 
 	}
 
+	public function contarCarrito(){
+		$objCon = new Conexion();
+		$con = $objCon->conectar();
+		$sql1="SELECT idCliente as id from cliente where idUsuario='".$this->idCliente."' ";
+		$info=$con->query($sql1);
+		$data=$info->fetch_assoc();
+		$sql2="SELECT COUNT(idCombo) as cont from carrito where idCliente= '".$data['id']."' order by(idCombo);";
+		$info=$con->query($sql2);
+		$data=$info->fetch_assoc();
+
+		return json_encode($data);
+	}
+
 
 }
 
