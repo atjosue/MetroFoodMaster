@@ -21,11 +21,11 @@ if (isset($_POST['key'])) {
 			case 'traerCombo':
 				traerCombo();
 				break;
-<<<<<<< HEAD
+
 			case 'contarCarro':
 				contarCarrito();
 				break;
-=======
+
 			case 'solicitarInfo':
 				solicitarInfo();
 				break;
@@ -38,7 +38,6 @@ if (isset($_POST['key'])) {
 			case 'recuperar':
 					recuperar();
 				break;					
->>>>>>> 564906ef8f8e3049b5275a29f5dfb19824e42035
 			
 			default:
 				
