@@ -4,7 +4,7 @@
   <head>
 
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../../contenido/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../pluggins/bootstrap/css/bootstrap.css">
     <script src="../../pluggins/plugins/JQuery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../../pluggins/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../pluggins/sweetalert-master/dist/sweetalert.css">
@@ -22,7 +22,7 @@
 
  <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="#">MetroFood</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,9 +33,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="dashBoardCliente.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-          <p class="lead"> <font color="white"><?php session_start(); echo "Bienvenido"; ?> </font></p>
-      </li>
+     
     
     </ul>
     <form class="form-inline my-2 my-lg-0">

@@ -41,25 +41,39 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">MetroFood</a>
+  <a class="navbar-brand" href="#">METROFOOD</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="dashboardRestaurante.php">Inicio</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Gestion</a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="perfilRestaurante.php">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="perfilRestaurante.php">Pedidos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="perfilRestaurante.php">Estadisticas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gestionRepartidores.php">Repartidores</a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <li></li>
-    <a href="../../app/cerrarSesion.php"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Cerrar sesión</button></a>
+    <a href="../../app/cerrarSesion.php">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Cerrar sesión</button>
+    </a>
   </div>
+  
 </nav>
 		<div class="container">
 

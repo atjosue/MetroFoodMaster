@@ -87,12 +87,7 @@ require_once 'Conexion.php';
 				session_start();
 				$_SESSION['ROL']=$data['rol'];
 				$_SESSION['IDUSUARIO']=$data['idUsuario'];
-
-				$sql2 = "select nombreRestaurante as nombre from restaurante where idUsuario='".$data['idUsuario']."'";
-				$res =$con->query($sql2);
-				$info = $res->fetch_assoc();
-
-				$_SESSION['USUARIO']=$info['nombre'];
+				$_SESSION['USUARIO']=$data['usuario'];
 
 					if ($_SESSION['ROL']=='1') {
 

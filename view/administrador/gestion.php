@@ -12,7 +12,7 @@
 <html>
 <head>
 	<title>Gestion de restaurantes</title>
-	<link rel="stylesheet" type="text/css" href="../../contenido/vendor/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../../pluggins/bootstrap/css/bootstrap.css">
 	<script src="../../pluggins/bootstrap/js/bootstrap.min.js"></script>	
 	<script type="text/javascript" src="../../contenido/vendor/js/bootstrap.js"></script>
 </head>
