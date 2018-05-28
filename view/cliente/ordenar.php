@@ -7,20 +7,33 @@
     header('location: ../../index.php');
   }
 */
+
+   require_once'../../model/Carrito.php'; 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gestion de restaurantes</title>
-  <link rel="stylesheet" type="text/css" href="../../contenido/vendor/bootstrap/css/bootstrap.css">
-  <script src="../../pluggins/bootstrap/js/bootstrap.min.js"></script>  
-  <script type="text/javascript" src="../../contenido/vendor/js/bootstrap.js"></script>
+  <title>Ordenar</title>
+  <!-- CSS -->
+<link rel="stylesheet" type="text/css" href="../../pluggins/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../pluggins/dataTable/material.min.css">
+<link rel="stylesheet" type="text/css" href="../../pluggins/dataTable/dataTables.material.min.css">
+<link rel="stylesheet" type="text/css" href="../../pluggins/sweetalert-master/dist/sweetalert.css">
+
+<!-- JS -->
+<script type="text/javascript" src="../../pluggins/pluginess/jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../pluggins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../pluggins/dataTable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../pluggins/dataTable/dataTables.material.min.js"></script>
+<script type="text/javascript" src="../../pluggins/jQuery-Mask/src/jquery.mask.js"></script>
+<script type="text/javascript" src="../../pluggins/sweetalert-master/dist/sweetalert.min.js"></script>  
+
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">MetroFood(REPARTIDORES)</a>
+  <a class="navbar-brand" href="#">MetroFood</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,7 +42,7 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item active">
-        <a class="nav-link" href=""></a>
+        <a class="nav-link" href="dashBoardCliente.php">Inicio</a>
       </li>
 
     </ul>
@@ -46,15 +59,70 @@
 <div class="container">
   <div  class="col-md-12"></div>
   <div class="clearfix"></div>
-  <div>(Nombre del repartidor) <br> <h4>Bienvenido</h4></div>
-  <div class="col-xs-6"></div>
-  <div class="col-xs-6"><div class="btn btn-lg btn-warning btn-block btn-signin"  id="pedidos"> Tiene una entrega </div>
+ 
+
+    <div class="container">
+      
+        <div class="col-md-9" style="margin-top: 10px;">
+                <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Ordenar</p>
+            </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <div class="btn-group pull-right">
+                     <div>
+                       <button class="btn btn-success  btn-sm " style="margin-left: 5px;" id="ordenar">Ordenar </button>
+                     </div>
+                     <div>
+                       <button class="btn btn-danger  btn-sm " style="margin-left: 5px;" id="cancelar">Cancelar</button>
+                     </div>   
+                        
+                        <br><br>
+                       
+                    
+          </div>
+        </div>
+        <div class="clearfix"></div>
+         <div class="col-md-12" style="margin-top: 0px;">
+          <table id="listadoClientes" class="mdl-data-table" cellspacing="1" width="100%">
+            <thead>
+              
+              <th>Nombre del Combo </th>
+              <th>Precio</th>
+              <th>Cantidad</th>              
+              <th>Subtotal</th>
+              <th>Acciones</th>
+            </thead>
+            <tbody>
+              
+            <?php 
+              $objCarrito = new Carrito();
+              $data = $objCarrito->extraerCombos();
+              if ($data!=false) {
+                $idCont=0.5;
+                foreach ($data as  $value) {
+                  
+                  echo "<tr>
+                      <td>".$value['nombreCombo']."</td>
+                      <td>".$value['precio']."</td>
+                      <td>".'<input type="number" name="cantidad" min="1" max="15" class="cantidad" value="1">'."</td>
+                      <td>".'<p id="'.$idCont.'" class="subtotal">algo</p>'."</td>
+                      <td>
+                        <input type='button' class='form-control btn-outline-warning btn-sm recuperarCombo' id='".$value['idCombo']."' value='Quitar'>
+                      </td>
+                        </tr>";
+                        $idCont++;
+                }
+              }
+
+             ?>
+              
+            </tbody>
+          </table>
+        </div>
+      
+  
 </div>
   
-
-  <div class="col-md-6"> 
-
-  </div>
+  
 </div>
 </body>
  <!-- Footer -->

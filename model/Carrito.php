@@ -174,6 +174,23 @@ class Carrito
 		return json_encode($data);
 	}
 
+	public function mostarCarrito(){
+			$objCon= new Conexion();
+			$con=$objCon->conectar();
+			$sql = " SELECT * from usuario where  idTipoUsuario=2 AND estadoUsuario=0";
+			$info=$con->query($sql);
+			
+
+				 if ($info->num_rows>0) {
+            
+		            $dato = $info;
+		        }else{
+
+		            $dato = false;
+		        }
+		        return $dato;
+		}
+
 
 }
 
