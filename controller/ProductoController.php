@@ -25,6 +25,7 @@ if (isset($_POST['key'])) {
 			case 'contarCarro':
 				contarCarrito();
 				break;
+
 			case 'solicitarInfo':
 				solicitarInfo();
 				break;
