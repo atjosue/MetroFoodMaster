@@ -66,6 +66,7 @@ class Repartidor
       	
 
         $sqlAll = "SELECT * from repartidor WHERE estadoRepartidor = 1 && idUsuario='".$_SESSION['IDUSUARIO']."' ";
+        
         $info = $con->query($sqlAll);
         if ($info->num_rows>0) {
             

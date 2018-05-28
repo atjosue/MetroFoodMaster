@@ -27,6 +27,7 @@
 <script type="text/javascript" src="../../pluggins/dataTable/dataTables.material.min.js"></script>
 <script type="text/javascript" src="../../pluggins/jQuery-Mask/src/jquery.mask.js"></script>
 <script type="text/javascript" src="../../pluggins/sweetalert-master/dist/sweetalert.min.js"></script>  
+<script type="text/javascript" src="../../resources/js/ordenarCliente.js" ></script>
 
 </head>
 
@@ -98,20 +99,23 @@
               $data = $objCarrito->extraerCombos();
               if ($data!=false) {
                 $idCont=0.5;
+                $idCont2='a';
                 foreach ($data as  $value) {
                   
                   echo "<tr>
                       <td>".$value['nombreCombo']."</td>
                       <td>".$value['precio']."</td>
-                      <td>".'<input type="number" name="cantidad" min="1" max="15" class="cantidad" value="1">'."</td>
-                      <td>".'<p id="'.$idCont.'" class="subtotal">algo</p>'."</td>
+                      <td>".'<input type="number" id="'.$idCont2.'" name="'.$value['idCombo'].'" min="1" max="15" class="cantidad" value="1" >'."</td>
+                      <td>".'<p id="'.$idCont.'" class="subtotal" name="">algo</p>'."</td>
                       <td>
                         <input type='button' class='form-control btn-outline-warning btn-sm recuperarCombo' id='".$value['idCombo']."' value='Quitar'>
                       </td>
                         </tr>";
                         $idCont++;
+                        $idCont2++;
                 }
               }
+
 
              ?>
               

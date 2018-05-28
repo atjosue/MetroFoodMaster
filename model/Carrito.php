@@ -81,7 +81,9 @@ class Carrito
 		$res=$con->query($sql1);
 		$data=$res->fetch_assoc();
 
-			$sql2="INSERT INTO `metrofooddb`.`carrito` (`nombreCombo`, `idCombo`, `precio`, `idCliente`) VALUES ('".$this->nombreCombo."', '".$this->idCombo."', '".$this->precio."', '".$data['id']."');";
+			$sql2="INSERT INTO `metrofooddb`.`carrito` (`nombreCombo`, `idCombo`, `precio`, `idCliente`, `cantidad`) 
+				   VALUES ('".$this->nombreCombo."', '".$this->idCombo."', '".$this->precio."', '".$data['id']."','1');";
+
 			
 
 			$res2= $con->query($sql2);
@@ -127,7 +129,7 @@ class Carrito
 		$res=$con->query($sql1);
 		$data = $res->fetch_assoc();
 
-		$sql="UPDATE `metrofooddb`.`carrito` SET `cantidad`='".$this->cantidad."' WHERE `idCliente`='".$data['id']."';";
+		$sql2="UPDATE `metrofooddb`.`carrito` SET `cantidad`='".$this->cantidad."' WHERE `idCombo`='".$this->idCombo."';";
 
 			$res2= $con->query($sql2);
 			if ($res2==1) {
@@ -135,6 +137,7 @@ class Carrito
 			}else{
 				$info=null;
 			}
+
 
 			return $info;
 
@@ -190,6 +193,24 @@ class Carrito
 		        }
 		        return $dato;
 		}
+
+	public function subtotal(){
+			$objCon= new Conexion();
+			$con=$objCon->conectar();
+			$sql1="select cantidad*precio as subtotal from carrito where idCombo='".$this->idCombo."';";
+			$info=$con->query($sql1);
+			$data=$info->fetch_assoc();
+
+				$sql2="UPDATE `metrofooddb`.`carrito` SET `subtotal`='".$data['subtotal']."' WHERE `idCombo`='".$this->idCombo."';";
+
+	}
+
+	public function total(){
+		$objCon= new Conexion();
+		$con=$objCon->conectar();
+
+		$sql="";
+	}
 
 
 }
