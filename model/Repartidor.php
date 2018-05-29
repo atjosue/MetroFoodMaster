@@ -85,7 +85,7 @@ class Repartidor
 
     	$objCon = new Conexion();
     	$con = $objCon->conectar();
-<<<<<<< HEAD
+
     	session_start();
       	
 
@@ -96,7 +96,7 @@ class Repartidor
             
             $dato = $info;
         }else{
-=======
+
   		
   		$sql1="SELECT idRestaurante AS id from restaurante WHERE idUsuario='".$id."';";
   		$info= $con->query($sql1);
