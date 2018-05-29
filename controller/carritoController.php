@@ -12,13 +12,16 @@
 				subtotal();
 				break;
 			case 'total':
-				subtotal();
+				total();
 				break;				
 			case 'ordenar':
 				ordenar();
 				break;
 			case 'cancelar':
 				cancelar();
+				break;	
+			case 'quitar':
+				quitar();
 				break;		
 			default:
 				
@@ -41,7 +44,16 @@
 		echo $res;
 	}
 	function total(){
-		
+		$objCarrito = new Carrito();
+		$resp=$objCarrito->total();
+		echo $resp;
+	}
+	function quitar(){
+		$objCarrito = new Carrito();
+		$dul=$objCarrito->setIdCombo($_POST['idCombo']);
+
+		$resp=$objCarrito->quitar();
+		echo $resp;
 	}
 
 	

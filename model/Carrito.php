@@ -202,14 +202,55 @@ class Carrito
 			$data=$info->fetch_assoc();
 
 				$sql2="UPDATE `metrofooddb`.`carrito` SET `subtotal`='".$data['subtotal']."' WHERE `idCombo`='".$this->idCombo."';";
+				$infa=$con->query($sql2);
+				
+				if ($infa==1) {
+					$resa=$infa;
+				}else{
+					$resa=false;
+				}
+				return $resa;
 
 	}
 
 	public function total(){
 		$objCon= new Conexion();
 		$con=$objCon->conectar();
+		session_start();
+		$sql1="select idCliente as id from cliente where idUsuario='".$_SESSION['IDUSUARIO']."'";
 
-		$sql="";
+		$res=$con->query($sql1);
+		$data = $res->fetch_assoc();
+
+
+		$sql2="SELECT SUM(subtotal) as total from carrito where idCliente='".$data['id']."';";
+		
+		$resp=$con->query($sql2);
+		$datos=$resp->fetch_assoc();
+		
+		return json_encode($datos);
+	}
+
+	public function quitar(){
+		$objCon= new Conexion();
+		$con=$objCon->conectar();
+		session_start();
+		$sql1="select idCliente as id from cliente where idUsuario='".$_SESSION['IDUSUARIO']."'";
+
+		$res=$con->query($sql1);
+		$data = $res->fetch_assoc();
+
+		$sql2="DELETE FROM `metrofooddb`.`carrito` WHERE `idCombo`='".$this->idCombo."';";
+		$infor=$con->query($sql2);
+		
+			if ($infor==1) {
+				$resp=$infor;
+			}else{
+				$resp=false;
+			}
+
+		return $resp;
+
 	}
 
 

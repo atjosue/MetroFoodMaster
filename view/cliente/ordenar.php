@@ -29,23 +29,23 @@
 <script type="text/javascript" src="../../pluggins/sweetalert-master/dist/sweetalert.min.js"></script>  
 <script type="text/javascript" src="../../resources/js/ordenarCliente.js" ></script>
 
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNh2ZPVxLNmV1o8KV6isxchmm9sSZUCwI&callback=initMap">
+    </script>
+    <script type="text/javascript" src="../../resources/js/ubicar.js" ></script>
+
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">MetroFood</a>
+  <div class="navbar-brand" href="#">MetroFood</div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      
-      <li class="nav-item active">
-        <a class="nav-link" href="dashBoardCliente.php">Inicio</a>
-      </li>
-
+    <ul class="navbar-nav mr-auto">  
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -108,22 +108,73 @@
                       <td>".'<input type="number" id="'.$idCont2.'" name="'.$value['idCombo'].'" min="1" max="15" class="cantidad" value="1" >'."</td>
                       <td>".'<p id="'.$idCont.'" class="subtotal" name="">algo</p>'."</td>
                       <td>
-                        <input type='button' class='form-control btn-outline-warning btn-sm recuperarCombo' id='".$value['idCombo']."' value='Quitar'>
+                        <input type='button' class='form-control btn-outline-warning btn-xs eliminarCombo' id='".$value['idCombo']."' value='Quitar'>
                       </td>
                         </tr>";
                         $idCont++;
                         $idCont2++;
                 }
+
               }
 
 
              ?>
+          <thead>
               
+              <th></th>
+              <th></th>
+              <th>Total</th> 
+
+              <th></th>
+              <th><input class="form-control col-xs-3 col-md-3 col-sm-3" type="text" id="total" name="total" readonly="true" ></th>
+            </thead>
             </tbody>
+
           </table>
+         
+
+          <br><br>
+          <div class="clearfix"></div>
+          <div class="col-md-8 col-sm-8 col-xs-8">
+
+                      <label class="label-control">Direccion</label> 
+                      <input type="text" id="direccion" name="direccion" class="form-control" value="Direccion de referencia">
+                    </div>
+
+          <div class="col-md-4 col-sm-4 col-xs-4">              
+                        <div class="btn btn-success" id="btnMAPA"> Ubicacion Exacta.(OBLIGATORIO)</div>
+                        <input type="hidden" name="lat" id="lati">
+                        <input type="hidden" name="long" id="long">
+                    </div>
+          <br><br>
+        </div>
+        <div class="row">
+             <div class="clearfix"></div>
+              <br><br><br><br>
+                  <div class="col-xs-2 col-md-2 col-sm-2"></div>
+
+                  <div id="botonFinal" class="col-sm-8 col-md-8 col-xs-8">
+
+                      <div id="map" class="z-depth-1" style="height: 400px; width: 700px;"">
+                        
+                      </div>
+                      <br><br>
+                      <div class="clearfix"></div>
+
+                      
+                      <center>
+                        <div class="btn btn-success" id="guardarInfo" > GUARDAR</div>
+                      
+                      <div class="btn btn-danger" id="cancelarInfo" > CANCELAR</div>
+
+                      </center>
+
+                      <br><br>
+
+                </div>
+      
         </div>
       
-  
 </div>
   
   
