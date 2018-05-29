@@ -58,10 +58,13 @@ class Repartidor
 	    	$this->fechaModificacion = $fechaModificacion;
 	}
 	
-	public function getAllRepartidor()
+	public function getAllRepartidor($id)
     {
+    	
+
     	$objCon = new Conexion();
     	$con = $objCon->conectar();
+<<<<<<< HEAD
     	session_start();
       	
 
@@ -72,11 +75,25 @@ class Repartidor
             
             $dato = $info;
         }else{
+=======
+  		
+  		$sql1="SELECT idRestaurante AS id from restaurante WHERE idUsuario='".$id."';";
+  		$info= $con->query($sql1);
+  		
+  		$data=$info->fetch_assoc();
+ 
+    	$sqlAll="SELECT r.idRepartidor, r.nombreRepartidor, r.apellidoRepartidor, r.telefono, r.DUI, r.idRestaurante, u.usuario as usuario, u.pass as contra FROM repartidor r INNER JOIN usuario u WHERE r.idUsuario='".$data['id']."' AND u.idUsuario='".$data['id']."';";
+    	
+       // $sqlAll = "SELECT * from repartidor WHERE estadoRepartidor = 1";
+       	
+        $info2 = $con->query($sqlAll);
+        $data2= $info2->fetch_assoc();
+>>>>>>> 3fdb4cccc5725bd853396de6a6890763b1040729
 
-            $dato = false;
-        }
+        
        
-        return $dato;
+		      
+        return $info2;
     }
 
 
