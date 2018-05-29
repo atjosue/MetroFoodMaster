@@ -125,6 +125,7 @@ function verificarImagen(){
 		$res=$objCarrito->contarCarrito();
 		echo $res;
 
+	}
 
 	function solicitarInfo()
 	{
@@ -188,8 +189,11 @@ function verificarImagen(){
 		$res = $objCombo->recuperarCombo($idCombo);
 		echo $res;
 		
+
 	}
-}
+
+
+
 	
 
  ?>

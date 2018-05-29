@@ -109,7 +109,7 @@
 			 								<td>".$value['fechaModificacionCombo']."</td>
 			 			
 			 								<td>
-			 									<input type='button' class='btn-outline-success btn-sm recuperarCombo' id='".$value['idCombo']."' value='Activar'>
+			 									<input type='button' class='form-control btn-outline-success btn-sm recuperarCombo' id='".$value['idCombo']."' value='Activar'>
 			 								</td>
 			 						      </tr>";
 			 					}
@@ -119,6 +119,7 @@
 				 			
 				 		</tbody>
 			 		</table>
+          <br><br><br>
 			 	</div>
 			
 		</div>	

@@ -50,6 +50,7 @@ console.log($("#prueba").val());
 				
 				
 				var dataProducto = JSON.stringify($('#infoProducto :input').serializeArray());
+				console.log(dataProducto);
 			
 				$.ajax({
 					type:'POST',
