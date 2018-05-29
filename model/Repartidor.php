@@ -85,6 +85,18 @@ class Repartidor
 
     	$objCon = new Conexion();
     	$con = $objCon->conectar();
+<<<<<<< HEAD
+    	session_start();
+      	
+
+        $sqlAll = "SELECT * from repartidor WHERE estadoRepartidor = 1 && idUsuario='".$_SESSION['IDUSUARIO']."' ";
+        
+        $info = $con->query($sqlAll);
+        if ($info->num_rows>0) {
+            
+            $dato = $info;
+        }else{
+=======
   		
   		$sql1="SELECT idRestaurante AS id from restaurante WHERE idUsuario='".$id."';";
   		$info= $con->query($sql1);
@@ -97,6 +109,7 @@ class Repartidor
        	
         $info2 = $con->query($sqlAll);
         $data2= $info2->fetch_assoc();
+>>>>>>> 3fdb4cccc5725bd853396de6a6890763b1040729
 
         
        
