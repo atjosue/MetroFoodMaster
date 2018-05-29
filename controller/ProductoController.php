@@ -125,6 +125,7 @@ function verificarImagen(){
 		$res=$objCarrito->contarCarrito();
 		echo $res;
 
+	}
 
 	function solicitarInfo()
 	{
@@ -189,7 +190,6 @@ function verificarImagen(){
 		echo $res;
 		
 	}
-}
 	
 
  ?>

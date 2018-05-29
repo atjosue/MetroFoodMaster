@@ -31,16 +31,21 @@
 
 	//$("#modalIngresoRepartidor").hide();
 	$("#formulario").hide();
-
+	$("#modalIngresoRepartidor").hide();
 	$("#nuevoRepartidor").on("click", function(){
+		$("#nombreRepartidor").val("");
+		$("#apellidoRepartidor").val("");
+		$("#numTel").val("");
+		$("#dui").val("");
+		$("#usuario").val("");
+		$("#pass").val("");
+		$("#rePass").val("");
+		$("#modalIngresoRepartidor").show({backdrop: "static", keyboard: false});
 		
-		$("#formulario").show();
-		$("#nuevoRepartidor").hide();
-		//$("#modalIngresoRepartidor").show({backdrop: "static", keyboard: false});
 	});
 
 	$("#cancelar").on("click", function(){
-		$("#formulario").hide();
+		$("#modalIngresoRepartidor").hide();
 		$("#nuevoRepartidor").show();
 	});
 
@@ -79,16 +84,13 @@
 
 
 		});
-
-		$("#cancelar").on("click", function(){
-			$("#modalIngresoRepartidor").hide();
-		});			
+			
 
 //Verificar las contraseñas
-			$("#repass").on("change",function(){
+			$("#rePass").on("change",function(){
 
 					var contra = $("#pass").val();
-					var recontra = $("#repass").val();
+					var recontra = $("#rePass").val();
 
 					if (recontra != contra) {
 
@@ -104,37 +106,38 @@
 
 									$("#pass").focus();
 									$("#pass").val("");
-									$("#repass").val("");
+									$("#rePass").val("");
 									
 					}
 			});
 
-			//Agregar al Restaurante.
+//Agregar al Restaurante.
 
-			$("#agregarRepartidor").on("click",function(){
+			$("#agregarRepartidor").on("click", function(){
 
-				var dataRepartidor = JSON.stringify($('#infoRepartidor :input').serializeArray());
-				console.log(dataRepartidor);
+			var dataRep = JSON.stringify($('#infoRepartidor :input').serializeArray());
+			console.log(dataRep);
 
-				$.ajax({
+			$.ajax({
 
 				type:'POST',
 				dataType: 'json',
-				data: {dataRepartidor,dataRepartidor,key:"agregarRepartidor",key1:'si'},
-				url:"../../controller/usuarioController.php",
+				data: {dataRep,dataRep,key:"agregar"},
+				url:"../../controller/noTable/ControllerRepartidor.php",
 				success : function(data){
 
 					if (data==true) {
 						swal({
-							title:"Restaurante Registrado correctamente",
-							timer: 1600,
+							title:"Exito!!",
+							text: "El ingreso ha sido exitoso ",
+							timer: 1800,
 							type: 'success',
 							closeOnConfirm: true,
 							closeOnCancel: true,
 
-						});
-						
-		  				setTimeout(function(){
+						})
+
+						setTimeout(function(){
 							location.reload();
 						},1000);
 					}
@@ -157,8 +160,7 @@
 				}
 
 			});
-		});
-
+		})
 
 
 

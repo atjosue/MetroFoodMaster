@@ -16,7 +16,7 @@
     header('location: ../../index.php');
 } */
 
-  require_once '../../controller/RepartidorController.php'; ?>
+  require_once '../../controller/noTable/ControllerRepartidor.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -59,10 +59,10 @@
         <a class="nav-link" href="perfilRestaurante.php">Perfil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="perfilRestaurante.php">Pedidos</a>
+        <a class="nav-link" href="#">Pedidos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="perfilRestaurante.php">Estadisticas</a>
+        <a class="nav-link" href="#">Estadisticas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="gestionRepartidores.php">Repartidores</a>
@@ -89,14 +89,14 @@
 		            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Repartidores</p>
 		            <p class="robo" style="font-weight: 300; font-size: 14px; height: 40px;">Gesti&oacute;n  de repartidores</p>
         		</div>
-            <div class="container form-control" id="formulario">
+            <!-- <div class="container form-control" id="formulario">
                   
                   <div class="row">
                     
-                        <div class="col-md-12 col-xs-12 col-lg-12" id="infoRepartidor">
+                       <div class="col-md-12 col-xs-12 col-lg-12" id="infoRepartidor">
                            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Agregar Repartidor</p>
                            <br>
-                          <form>
+                          <form class="info">
                           <div class="form-row" >
                             <div class="form-group col-md-6">
                                 <label >Nombres</label>
@@ -133,7 +133,7 @@
                             </div>
 
                            <br><br>
-                            <button type="submit" class="btn btn-primary" id="AgregarRepartidor">Enviar</button>
+                            <button type="submit" class="btn btn-primary" id="agregarRepartidor">Enviar</button>
                             <button type="submit" class="btn btn-danger" id="cancelar">Cancelar</button>
                     </form> 
                         </div>
@@ -143,7 +143,7 @@
                       
                           
               </div>
-</div>
+</div>-->
 
 				<div class="col-md-3" style="margin-top: 10px;">
 					<div class="btn-group pull-right">
@@ -213,47 +213,74 @@
 
 
 
-<!-- Modal de unsercion de repartidor 
-<div class="modal modal" id="modalIngresoRepartidor" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-------------------------------- Modal de INSERCION de repartidor ----------------------------------------->
+
+<div class="modal " id="modalIngresoRepartidor" role="dialog" aria-labelledby="myModalLabel" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header " Style="height:45px;">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                    
                     <span class="robo" style="font-size: 20px;">Agregar Repartidor</span>
                 </div>
                 <div class="modal-body" >
-                	
+                  
                       <div class="row" id="infoRepartidor">
-                          <div class="form-column col-md-4 col-sm-4 col-xs-4">
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
                                  <div class="form-group required">
-                                     <label for="nombreCiclo" class="control-label">Username</label>
-                                     <input type="text" class="form-control requerido"  
-                                            placeholder="Username" name="username"  required>
+                                  <label class="control-label">Nombres</label>
+                                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombres" required>
                                  </div>
                           </div>
-                           <div class="form-column col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-group required">
-                              <label for="password" class="control-label">Password</label>            
-                              <input type="password"  name="password" class="form-control" id="password" required >
-                            </div>
-                          </div>
-                          <div class="form-column col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-group required">
-                              <label for="repassword" class="control-label">Re-Password</label>            
-                              <input type="password"  name="repassword" class="form-control" id="repassword" required>
-                            </div>
-                          </div>
-                          <div class="form-column col-md-4 col-sm-4 col-xs-4">
                            
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group required">
+                              <label class="control-label">Apellidos</label>            
+                              <input type="text"  name="apellido" class="form-control" id="apellido" placeholder="Apellidos" required>
+                            </div>
+                          </div>
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
+                                 <div class="form-group required">
+                                  <label class="control-label">Telefono</label>
+                                 <input type="text" class="form-control"  name="telefono" id="numTel" placeholder="503-0000-0000" required>
+                                 </div>
+                          </div>
+                           
+                          <div class="form-column col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group required">
+                              <label  class="control-label">DUI</label>            
+                              <input type="text"  name="dui" class="form-control" id="duiRep" placeholder="12345678-9" required>
                             </div>
                           </div>
 
+                          <div class="form-column col-md-3 col-sm-3 col-xs-3">
+                            <div class="form-group required">
+                              <label  class="control-label">Usuario</label>            
+                              <input type="text"  name="usuario" class="form-control" id="usuario" placeholder="Nombre de usuario" required>
+                            </div>
+                          </div>
+
+                          <div class="form-column col-md-3 col-sm-3 col-xs-3">
+                            <div class="form-group required">
+                              <label  class="control-label">Contraseña</label>            
+                              <input type="password"  name="pass" class="form-control" id="pass" placeholder="" required>
+                            </div>
+                          </div>
+
+                          <div class="form-column col-md-3 col-sm-3 col-xs-3">
+                            <div class="form-group required">
+                              <label  class="control-label">Contraseña</label>            
+                              <input type="password"  name="rePass" class="form-control" id="rePass" placeholder="" required>
+                            </div>
+                          </div>
             
                           <div class="clearfix"></div>
-                                <button class="btn btn-primary  btn-sm " id="agregarRepartidor" >Guardar</button>
-                                <button class="btn btn-primary  btn-sm " id="cancelar" >Cancelar</button>
+
                     </div>
                     <div>
+                    <button class="btn btn-primary  btn-sm " id="agregarRepartidor" >Guardar</button>
+                    <button class="btn btn-primary  btn-sm " id="cancelar" >Cancelar</button>
+                    
+                   
 
                   </div>
 
@@ -264,4 +291,3 @@
             </div>
         </div> 
 </div>    
--->

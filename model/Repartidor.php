@@ -5,6 +5,9 @@ class Repartidor
 	protected $idRepartidor;
 	protected $idUsuario;
 	protected $nombreRepartidor;
+	protected $apellidoRepartidor;
+	protected $telefonoRepartidor;
+	protected $dui;
 	protected $direccionRepartidor;
 	protected $estadoDelRepartidor;
 	protected $fechaCreacion;
@@ -32,6 +35,24 @@ class Repartidor
 	}
 	public function setNombreRepartidor($nombreRepartidor){
 	    	$this->nombreRepartidor = $nombreRepartidor;
+	}
+	public function getApellidoRepartidor(){
+	    	return $this->apellidoRepartidor;
+	}
+	public function setApellidoRepartidor($apellidoRepartidor){
+	    	$this->apellidoRepartidor = $apellidoRepartidor;
+	}
+	public function getTelefonoRepartidor(){
+	    	return $this->telefonoRepartidor;
+	}
+	public function setTelefonoRepartidor($telefonoRepartidor){
+	    	$this->telefonoRepartidor = $telefonoRepartidor;
+	}
+	public function getDui(){
+	    	return $this->dui;
+	}
+	public function setDui($dui){
+	    	$this->dui = $dui;
 	}
 	public function getDireccionRepartidor(){
 	    	return $this->direccionRepartidor;
@@ -82,6 +103,45 @@ class Repartidor
 		      
         return $info2;
     }
+
+     public function agregar($idRestaurante, $usuario,$contra){
+     		$passEncrip=sha1($contra);
+    		$con = $this->conectar();
+    		$fecha=now();
+			$objUsuario = new Usuario();
+
+			$vendor = false;
+
+			$sql1 = "INSERT INTO `metrofooddb`.`usuario` (`usuario`, `pass`, `fechaCreacionUsuario`, `fechaModificacionUsuario`, `estadoUsuario`, `idTipoUsuario`) VALUES ('".$usuario."', '".$passEncrip."', '".$fecha."', '".$fecha."', '1', '4')";
+
+			echo $sql;
+			die();
+
+			$info = $con->query($sql1);
+			
+				if ($info) {
+					
+					$sql2 = "select max(u.idUsuario) as id from usuario u";
+
+
+					$info2 = $con->query($sql2);
+
+					$data = $info2->fetch_assoc();
+
+					$sql4 = "INSERT INTO `metrofooddb`.`cliente` (`idUsuario`, `nombreCliente`, `apellidoCliente`, `estado`, `direccion`, `longCliente`, `latiCliente`, `correoCliente`, `telefonoCLiente`) VALUES ('".$data['id']."', '".$this->nombre."', '".$this->apellido."', '1', 'col San Anotnio San Salvador', '00000000', '0000000', '".$this->correoCliente."', '".$this->telefono."');";
+
+				
+							$info4= $con->query($sql4);
+
+						if ($info4>0) {
+							$vendor = true;	
+						}
+
+				}
+				
+				return $vendor;
+
+		}
 
 
 }
